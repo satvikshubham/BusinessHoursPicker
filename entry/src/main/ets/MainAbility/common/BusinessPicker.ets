@@ -54,7 +54,8 @@ export struct BusinessPicker{
                 TimePickerDialog.show({
                   useMilitaryTime: this.isUseMilitaryTime,
                   onAccept: (value: TimePickerResult) => {
-                    this.time = JSON.stringify(value)
+                    this.time = JSON.stringify(value.hour.toString() + ":" + value.minute.toString())
+                    this.business.setFromTime(1,JSON.stringify(value))
                     //                    console.info("TimePickerDialog:onAccept()" + JSON.stringify(value))
                   },
                   onCancel: () => {
