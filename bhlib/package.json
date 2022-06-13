@@ -1,0 +1,11 @@
+{
+    "name": "business-hours-picker",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/business.ets",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Satvik Shubham Singh",
+    "license": "ISC"
+  }
