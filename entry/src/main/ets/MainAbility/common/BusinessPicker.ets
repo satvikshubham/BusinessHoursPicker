@@ -30,8 +30,8 @@ export struct BusinessPicker{
   @State sunToTime : string = "Set Time";
   @State count : number = 0;
   scroller:Scroller=new Scroller();
-  size : number = 20;
-
+  size : number = 20
+  finalBusinessModel : Business = new Business()
 //  business = new Business();
   build() {
     Scroll(this.scroller){
@@ -441,6 +441,15 @@ export struct BusinessPicker{
         Flex ({justifyContent: FlexAlign.SpaceBetween, direction: FlexDirection.Row}) {
           Button('Apply', { type: ButtonType.Capsule })
             .onClick((event: ClickEvent) => {
+              console.log(JSON.stringify(this.business))
+              for(var i :number = 0;i <6;i++){
+                if (this.working[i]){
+                  this.finalBusinessModel.isWorkingDay(i)
+                  this.finalBusinessModel.setFromTime(i,this.business.getFromTime(i))
+                  this.finalBusinessModel.setToTime(i,this.business.getToTime(i))
+                  console.log(JSON.stringify(this.finalBusinessModel))
+                }
+              }
               console.log("Apply Button Pressed")
             })
           Button('View', { type: ButtonType.Capsule })
@@ -448,7 +457,7 @@ export struct BusinessPicker{
               console.log("View Button Pressed")
             })
         }
-        
+
       }.padding(20)
     }
   }

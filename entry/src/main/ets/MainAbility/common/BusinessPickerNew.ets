@@ -10,7 +10,7 @@ import {businessDayAndTime} from './businessDayAndTime';
 export struct BusinessPicker{
   @State business : Business = new Business();
   @State working : boolean[] = [false,false,false,false,false,false,false];
-
+  @State finalBusinessModel : Business = new Business()
   scroller:Scroller=new Scroller();
   build() {
     Scroll(this.scroller){
@@ -57,6 +57,27 @@ export struct BusinessPicker{
           business : this.business,
           working : this.working
         })
+        Flex ({justifyContent: FlexAlign.SpaceBetween, direction: FlexDirection.Row}) {
+          Button('Apply', { type: ButtonType.Capsule })
+            .onClick((event: ClickEvent) => {
+              console.log(JSON.stringify(this.business))
+              console.log(this.working.toString())
+              for(var i :number = 0;i <7;i++){
+                if (this.working[i]){
+                  console.log(i.toString())
+                  this.finalBusinessModel.setWorkingDay(i, true)
+                  this.finalBusinessModel.setFromTime(i,this.business.getFromTime(i))
+                  this.finalBusinessModel.setToTime(i,this.business.getToTime(i))
+                }
+              }
+              console.log(JSON.stringify(this.finalBusinessModel))
+              console.log("Apply Button Pressed")
+            })
+          Button('View', { type: ButtonType.Capsule })
+            .onClick((event: ClickEvent) => {
+              console.log("View Button Pressed")
+            })
+        }
       }.padding(20)
     }
   }

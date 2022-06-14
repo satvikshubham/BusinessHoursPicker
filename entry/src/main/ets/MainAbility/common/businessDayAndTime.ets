@@ -12,16 +12,15 @@ export struct businessDayAndTime {
   business : Business
 
   build(){
-    Row(){
+    Column(){
       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
         Text(this.day).fontSize(this.size)
         Toggle({ type: ToggleType.Switch, isOn: false })
           .selectedColor(0x39a2db)
           .switchPointColor(0xe5ffffff)
           .onChange((isOn: boolean) => {
-            this.business.setWorkingDay(1,isOn);
+            this.business.setWorkingDay(this.dayIndex,isOn);
             this.working[this.dayIndex - 1] = isOn;
-
           })
       }
 
@@ -36,7 +35,6 @@ export struct businessDayAndTime {
                   onAccept: (value: TimePickerResult) => {
                     this.fromTime = JSON.stringify(value.hour.toString() + ":" + value.minute.toString())
                     this.business.setFromTime(this.dayIndex,this.fromTime)
-                    console.log(this.business.getFromTime(1))
 
                   },
                   onCancel: () => {

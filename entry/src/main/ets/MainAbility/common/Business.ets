@@ -8,6 +8,7 @@ class Business {
     }
     setWorkingDay = (day: number,v : boolean): void => {
         this.workingDays[day - 1] = v;
+//        console.log(this.workingDays.toString())
     }
     setFromTime = (day: number, fromTime: string): void => {
         this.from[day - 1] = fromTime;
