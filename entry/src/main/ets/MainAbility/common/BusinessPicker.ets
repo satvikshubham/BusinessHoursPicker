@@ -1,7 +1,8 @@
-import {BasePojo}from './BasePojo';
-import {BusinessHours}from './BusinessHours';
+//import {BasePojo}from './BasePojo';
+//import {BusinessHours}from './BusinessHours';
 import {Business} from './Business';
-
+import prompt from '@system.prompt';
+import {businessDayAndTime} from './businessDayAndTime';
 
 @Entry
 @Preview
@@ -9,9 +10,9 @@ import {Business} from './Business';
 export struct BusinessPicker{
   @State weekDaysIndex : number [] = [1,2,3,4,5,6,7];
   @State working : boolean[] = [false,false,false,false,false,false,false];
-  @State BusinessTime : BusinessHours[] = [];
+//  @State BusinessTime : BusinessHours[] = [];
   @State business: Business = new Business();
-  @State isUseMilitaryTime: boolean = true
+  @State isUseMilitaryTime: boolean = true;
   @State time : string = "Hello";
   @State monFromTime : string = "Set Time";
   @State monToTime : string = "Set Time";
@@ -27,8 +28,10 @@ export struct BusinessPicker{
   @State satToTime : string = "Set Time";
   @State sunFromTime : string = "Set Time";
   @State sunToTime : string = "Set Time";
+  @State count : number = 0;
   scroller:Scroller=new Scroller();
   size : number = 20;
+
 //  business = new Business();
   build() {
     Scroll(this.scroller){
@@ -56,13 +59,14 @@ export struct BusinessPicker{
                       this.monFromTime = JSON.stringify(value.hour.toString() + ":" + value.minute.toString())
                       this.monFromTime = value.hour.toString()
                       this.business.setFromTime(1,this.monFromTime)
+                      this.count =this.count +1
+                      console.log(this.business.getFromTime(1))
                     },
                     onCancel: () => {
                       console.info("TimePickerDialog:onCancel()")
                     },
                     onChange: (value: TimePickerResult) => {
                       this.monFromTime = JSON.stringify(value.hour.toString() + ":" + value.minute.toString())
-
                       this.business.setFromTime(1,this.monFromTime)
                     }
                   })
@@ -155,7 +159,7 @@ export struct BusinessPicker{
             .selectedColor(0x39a2db)
             .switchPointColor(0xe5ffffff)
             .onChange((isOn: boolean) => {
-              this.business.setWorkingDay(1,isOn);
+              this.business.setWorkingDay(2,isOn);
               this.working[2] = isOn;
             })
         }
@@ -434,6 +438,17 @@ export struct BusinessPicker{
             }
           }.padding(20).visibility(Visibility.Visible)
         }
+        Flex ({justifyContent: FlexAlign.SpaceBetween, direction: FlexDirection.Row}) {
+          Button('Apply', { type: ButtonType.Capsule })
+            .onClick((event: ClickEvent) => {
+              console.log("Apply Button Pressed")
+            })
+          Button('View', { type: ButtonType.Capsule })
+            .onClick((event: ClickEvent) => {
+              console.log("View Button Pressed")
+            })
+        }
+        
       }.padding(20)
     }
   }
