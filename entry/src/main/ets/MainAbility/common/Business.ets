@@ -28,5 +28,10 @@ class Business {
     getToTime = (day: number): string => {
         return this.to[day - 1];
     }
+    reset = () :void =>{
+        this.workingDays = [false, false, false, false, false, false, false]
+        this.from = ["Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time"]
+        this.to = ["Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time"]
+    }
 }
 export {Business};
