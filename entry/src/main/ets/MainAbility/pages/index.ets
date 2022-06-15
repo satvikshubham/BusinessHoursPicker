@@ -44,8 +44,8 @@ struct indexAtr {
                 router.push({
                   uri : 'pages/viewerIndex',
                   params:{
-                    finalBusinessModel : this.finalBusinessModel,
-                    s: this.s
+                    finalBusinessModel : JSON.stringify(this.finalBusinessModel),
+                    s: 20
                   }});
               })
           }.padding({left:20, right: 20})
