@@ -1,15 +1,17 @@
 import {Business} from './Business';
 
-@Preview
+//
+//@Entry
+//@Preview
 @Component
-@Entry
+
 
 export struct Viewer{
-  scroller:Scroller=new Scroller();
-  business : Business = new Business();
+  scroller :Scroller = new Scroller()
+  business : Business = new Business()
+  days : string [] = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
   build(){
     Scroll(this.scroller) {
-
       Column() {
         Flex({  justifyContent:FlexAlign.Center}){
           Row(){
@@ -23,13 +25,13 @@ export struct Viewer{
               Text("Sunday").fontSize(14)
             }
             Column(){
-              Text(this.business.getFromTime[0]+ " to "+ this.business.getToTime[0]).fontSize(14)
-              Text(this.business.getFromTime[1]+ " to "+ this.business.getToTime[1]).fontSize(14)
-              Text(this.business.getFromTime[2]+ " to "+ this.business.getToTime[2]).fontSize(14)
-              Text(this.business.getFromTime[3]+ " to "+ this.business.getToTime[3]).fontSize(14)
-              Text(this.business.getFromTime[4]+ " to "+ this.business.getToTime[4]).fontSize(14)
-              Text(this.business.getFromTime[5]+ " to "+ this.business.getToTime[5]).fontSize(14)
-              Text(this.business.getFromTime[6]+ " to "+ this.business.getToTime[6]).fontSize(14)
+              Text(this.business.getFromTime(1)+ " to "+ this.business.getToTime(1)).fontSize(14)
+              Text(this.business.getFromTime(2)+ " to "+ this.business.getToTime(2)).fontSize(14)
+              Text(this.business.getFromTime(3)+ " to "+ this.business.getToTime(3)).fontSize(14)
+              Text(this.business.getFromTime(4)+ " to "+ this.business.getToTime(4)).fontSize(14)
+              Text(this.business.getFromTime(5)+ " to "+ this.business.getToTime(5)).fontSize(14)
+              Text(this.business.getFromTime(6)+ " to "+ this.business.getToTime(6)).fontSize(14)
+              Text(this.business.getFromTime(7)+ " to "+ this.business.getToTime(7)).fontSize(14)
             }
           }
         }
