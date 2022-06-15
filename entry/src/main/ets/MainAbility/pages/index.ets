@@ -7,11 +7,12 @@ import prompt from '@system.prompt';
 
 @Entry
 @Component
-export struct indexAtr {
+struct indexAtr {
   finalBusinessModel : Business  = new Business();
   business : Business  = new Business();
   working : boolean[] = [false,false,false,false,false,false,false];
-  scroller : Scroller = new Scroller()
+  scroller : Scroller = new Scroller();
+  s : number = 20;
 
   build(){
     Scroll(this.scroller){
@@ -38,8 +39,14 @@ export struct indexAtr {
                 })
               })
             Button('View', { type: ButtonType.Capsule })
-              .onClick((event: ClickEvent) => {
-                router.push({ uri : './viewerIndex'})
+              .onClick(() => {
+                console.log(JSON.stringify(this.finalBusinessModel))
+                router.push({
+                  uri : 'pages/viewerIndex',
+                  params:{
+                    finalBusinessModel : this.finalBusinessModel,
+                    s: this.s
+                  }});
               })
           }.padding({left:20, right: 20})
         }
