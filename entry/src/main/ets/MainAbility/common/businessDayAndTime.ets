@@ -52,7 +52,8 @@ export struct businessDayAndTime {
 
                   },
                   onCancel: () => {
-                    console.info("TimePickerDialog:onCancel()")
+                    this.fromTime = "Set Time"
+                    this.toTime = "Set Time"
                   },
                   onChange: (value: TimePickerResult) => {
                     this.fromTime = this.getTime(value.hour.toString()) + ":" + this.getTime(value.minute.toString())
@@ -73,7 +74,8 @@ export struct businessDayAndTime {
                     this.business.setToTime(this.dayIndex,this.toTime)
                   },
                   onCancel: () => {
-                    console.info("TimePickerDialog:onCancel()")
+                    this.fromTime = "Set Time"
+                    this.toTime = "Set Time"
                   },
                   onChange: (value: TimePickerResult) => {
                     this.toTime = this.getTime(value.hour.toString()) + ":" + this.getTime(value.minute.toString())

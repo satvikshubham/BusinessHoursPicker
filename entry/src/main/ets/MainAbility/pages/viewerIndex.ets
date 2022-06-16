@@ -9,7 +9,7 @@ struct ViewerIndex{
   finalBusinessModel : Business = <Business> router.getParams().finalBusinessModel;
 
   aboutToAppear(){
-    console.log(JSON.stringify(this.finalBusinessModel))
+//    console.log(JSON.stringify(this.finalBusinessModel))
   }
   build(){
     Column({space:10}){
