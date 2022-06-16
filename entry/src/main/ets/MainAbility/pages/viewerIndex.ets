@@ -13,11 +13,9 @@ struct ViewerIndex{
   }
   build(){
     Column({space:10}){
-//      Flex({justifyContent:FlexAlign.Start, alignItems: ItemAlign.Center}){
         Viewer({
           finalBusinessModel : this.finalBusinessModel
         })
-//      }
       Button("Back").onClick(()=>{
         router.back()
       })
