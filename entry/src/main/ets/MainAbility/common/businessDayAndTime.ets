@@ -29,6 +29,10 @@ export struct businessDayAndTime {
           .onChange((isOn: boolean) => {
             this.business.setWorkingDay(this.dayIndex,isOn);
             this.working[this.dayIndex - 1] = isOn;
+            if (!isOn){
+              this.fromTime = "Set Time"
+              this.toTime = "Set Time"
+            }
           })
       }
 
