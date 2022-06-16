@@ -2,11 +2,15 @@ import {Business} from './Business';
 
 
 @Component
+
 export struct Viewer{
   scroller :Scroller = new Scroller()
-  finalBusinessModel : Business = new Business()
+  private finalBusinessModel : Business = undefined
   days : string [] = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
   size : number = 20
+  aboutToAppear(){
+    this.finalBusinessModel = new Business(this.finalBusinessModel)
+  }
   build(){
     Scroll(this.scroller) {
       Column() {
@@ -32,6 +36,7 @@ export struct Viewer{
             }
           }
         }
+
       }.padding(20)
     }
   }

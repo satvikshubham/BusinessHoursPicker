@@ -56,27 +56,6 @@ export struct BusinessPicker{
           business : this.business,
           working : this.working
         })
-//        Flex ({justifyContent: FlexAlign.SpaceBetween, direction: FlexDirection.Row}) {
-//          Button('Apply', { type: ButtonType.Capsule })
-//            .onClick((event: ClickEvent) => {
-//              this.finalBusinessModel.reset()
-//              for(var i :number = 0;i <7;i++){
-//                if (this.working[i] == true){
-//                  this.finalBusinessModel.setWorkingDay(i+1, true)
-//                  this.finalBusinessModel.setFromTime(i+1,this.business.getFromTime(i+1))
-//                  this.finalBusinessModel.setToTime(i+1,this.business.getToTime(i+1))
-//                }
-//              }
-//              prompt.showToast({
-//                message: "Saved"
-//              })
-//            })
-//          Button('View', { type: ButtonType.Capsule })
-//            .onClick((event: ClickEvent) => {
-////                this.finalBusinessModel/ exporting it
-//            })
-//        }
       }.padding(20)
-//    }
   }
 }

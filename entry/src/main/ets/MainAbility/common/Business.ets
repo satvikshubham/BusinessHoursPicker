@@ -3,12 +3,16 @@ class Business {
     private workingDays: boolean[] = [false, false, false, false, false, false, false];
     private from: string[] = ["Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time"];
     private to: string[] = ["Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time"];
-    constructor() {
-
+    constructor(business? : Business) {
+        if (business) {
+            this.daysOfWeek = business.daysOfWeek
+            this.workingDays = business.workingDays
+            this.from = business.from
+            this.to = business.to
+        }
     }
     setWorkingDay = (day: number,v : boolean): void => {
         this.workingDays[day - 1] = v;
-//        console.log(this.workingDays.toString())
     }
     setFromTime = (day: number, fromTime: string): void => {
         this.from[day - 1] = fromTime;

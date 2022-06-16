@@ -18,6 +18,9 @@ struct ViewerIndex{
           finalBusinessModel : this.finalBusinessModel
         })
       }
+      Button("Back").onClick(()=>{
+        router.back()
+      })
     }
   }
 }
