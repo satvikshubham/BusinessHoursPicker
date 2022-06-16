@@ -8,7 +8,8 @@ import prompt from '@system.prompt';
 @Entry
 @Component
 struct indexAtr {
-  finalBusinessModel : Business  = new Business();
+  finalBusinessModel : Business  = new Business()
+  @State tempModel : Business = new Business()
   business : Business  = new Business();
   working : boolean[] = [false,false,false,false,false,false,false];
   scroller : Scroller = new Scroller();
@@ -34,6 +35,7 @@ struct indexAtr {
                     this.finalBusinessModel.setToTime(i+1,this.business.getToTime(i+1))
                   }
                 }
+                this.tempModel = this.finalBusinessModel
                 prompt.showToast({
                   message: "Saved"
                 })
@@ -44,7 +46,7 @@ struct indexAtr {
                 router.push({
                   uri : 'pages/viewerIndex',
                   params:{
-                    finalBusinessModel : JSON.stringify(this.finalBusinessModel),
+                    finalBusinessModel : this.tempModel,
                     s: 20
                   }});
               })

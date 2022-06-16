@@ -6,8 +6,8 @@ import router from '@system.router';
 @Preview
 @Entry
 struct ViewerIndex{
-   finalBusinessModel :Business = new Business();
-//   s1  = router.getParams().s1;
+  finalBusinessModel :Business = new Business()
+
   build(){
     Column(){
       Viewer({
@@ -16,7 +16,6 @@ struct ViewerIndex{
 
       Button("Check").onClick(() =>{
         console.log(JSON.stringify(this.finalBusinessModel))
-//        console.log(this.s1.toString())
       })
     }
   }
