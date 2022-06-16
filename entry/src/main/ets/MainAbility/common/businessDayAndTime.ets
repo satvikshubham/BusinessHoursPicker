@@ -11,7 +11,14 @@ export struct businessDayAndTime {
   @State private toTime : string = "Set Time";
   @State private isUseMilitaryTime: boolean = true;
   business : Business
-
+  getTime(t : string){
+    if (t.length==1){
+      return "0"+t;
+    }
+    else{
+      return t;
+    }
+  }
   build(){
     Column(){
       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
@@ -33,8 +40,10 @@ export struct businessDayAndTime {
               Text(this.fromTime).onClick(() =>{
                 TimePickerDialog.show({
                   useMilitaryTime: this.isUseMilitaryTime,
+                  selected: new Date('09-00'),
+
                   onAccept: (value: TimePickerResult) => {
-                    this.fromTime = JSON.stringify(value.hour.toString() + ":" + value.minute.toString())
+                    this.fromTime = this.getTime(value.hour.toString()) + ":" + this.getTime(value.minute.toString())
                     this.business.setFromTime(this.dayIndex,this.fromTime)
 
                   },
@@ -42,9 +51,9 @@ export struct businessDayAndTime {
                     console.info("TimePickerDialog:onCancel()")
                   },
                   onChange: (value: TimePickerResult) => {
-                    this.fromTime = JSON.stringify(value.hour.toString() + ":" + value.minute.toString())
+                    this.fromTime = this.getTime(value.hour.toString()) + ":" + this.getTime(value.minute.toString())
                     this.business.setFromTime(this.dayIndex,this.fromTime)
-                  }
+                  },
                 })
               }).fontSize(this.size-5).padding({top:20})
             }
@@ -54,18 +63,17 @@ export struct businessDayAndTime {
               Text(this.toTime).onClick(() =>{
                 TimePickerDialog.show({
                   useMilitaryTime: this.isUseMilitaryTime,
+                  selected: new Date('17-00'),
                   onAccept: (value: TimePickerResult) => {
-                    this.toTime = JSON.stringify(value.hour.toString() + ":" + value.minute.toString())
+                    this.toTime = this.getTime(value.hour.toString()) + ":" + this.getTime(value.minute.toString())
                     this.business.setToTime(this.dayIndex,this.toTime)
-                    //                    console.info("TimePickerDialog:onAccept()" + JSON.stringify(value))
                   },
                   onCancel: () => {
                     console.info("TimePickerDialog:onCancel()")
                   },
                   onChange: (value: TimePickerResult) => {
-                    this.toTime = JSON.stringify(value.hour.toString() + ":" + value.minute.toString())
+                    this.toTime = this.getTime(value.hour.toString()) + ":" + this.getTime(value.minute.toString())
                     this.business.setToTime(this.dayIndex,this.toTime)
-                    //                    console.info("TimePickerDialog:onChange()" + JSON.stringify(value))
                   }
                 })
               }).fontSize(this.size-5).padding({top:20})

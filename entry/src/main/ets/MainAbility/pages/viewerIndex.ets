@@ -12,15 +12,15 @@ struct ViewerIndex{
     console.log(JSON.stringify(this.finalBusinessModel))
   }
   build(){
-    Column(){
-      Flex({justifyContent:FlexAlign.Center}){
+    Column({space:10}){
+//      Flex({justifyContent:FlexAlign.Start, alignItems: ItemAlign.Center}){
         Viewer({
           finalBusinessModel : this.finalBusinessModel
         })
-      }
+//      }
       Button("Back").onClick(()=>{
         router.back()
       })
-    }
+    }.margin({top:'25%'})
   }
 }

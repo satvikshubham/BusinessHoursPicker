@@ -12,7 +12,6 @@ export struct BusinessPicker{
   @State finalBusinessModel : Business = new Business()
   scroller:Scroller=new Scroller();
   build() {
-//    Scroll(this.scroller){
       Column(){
         businessDayAndTime({
           dayIndex : 1,
