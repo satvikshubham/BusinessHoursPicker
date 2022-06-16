@@ -13,7 +13,6 @@ struct indexAtr {
   business : Business  = new Business();
   working : boolean[] = [false,false,false,false,false,false,false];
   scroller : Scroller = new Scroller();
-  s : number = 20;
 
   build(){
     Scroll(this.scroller){
@@ -47,7 +46,6 @@ struct indexAtr {
                   uri : 'pages/viewerIndex',
                   params:{
                     finalBusinessModel : this.tempModel,
-                    s: 20
                   }});
               })
           }.padding({left:20, right: 20})

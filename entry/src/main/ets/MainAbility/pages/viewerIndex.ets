@@ -6,17 +6,18 @@ import router from '@system.router';
 @Preview
 @Entry
 struct ViewerIndex{
-  finalBusinessModel :Business = new Business()
+  finalBusinessModel : Business = <Business> router.getParams().finalBusinessModel;
 
+  aboutToAppear(){
+    console.log(JSON.stringify(this.finalBusinessModel))
+  }
   build(){
     Column(){
-      Viewer({
-        finalBusinessModel : this.finalBusinessModel
-      })
-
-      Button("Check").onClick(() =>{
-        console.log(JSON.stringify(this.finalBusinessModel))
-      })
+      Flex({justifyContent:FlexAlign.Center}){
+        Viewer({
+          finalBusinessModel : this.finalBusinessModel
+        })
+      }
     }
   }
 }

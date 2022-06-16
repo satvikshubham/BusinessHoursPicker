@@ -1,11 +1,7 @@
 import {Business} from './Business';
 
-//
-//@Entry
-//@Preview
+
 @Component
-
-
 export struct Viewer{
   scroller :Scroller = new Scroller()
   finalBusinessModel : Business = new Business()
