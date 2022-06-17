@@ -26,6 +26,7 @@ struct indexAtr {
             Button('Apply', { type: ButtonType.Normal })
               .onClick((event: ClickEvent) => {
                 var done : boolean = true
+                console.log(" Hello " +JSON.stringify(this.business))
                 this.finalBusinessModel.reset()
                 console.log(this.working.toString())
                 for(var i :number = 0;i <7;i++){
