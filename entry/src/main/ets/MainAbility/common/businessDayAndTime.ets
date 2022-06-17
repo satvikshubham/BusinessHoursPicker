@@ -3,6 +3,9 @@ import {Business} from './Business';
 @CustomDialog
 struct CustomDialogExample {
   time: string
+  where : string
+  dayInd : number
+  callback: (selIndex, where, dayInd) => void
   arr :string[]
     =[
     "24h","00:00", "01:00", "02:00", "03:00",
@@ -18,25 +21,24 @@ struct CustomDialogExample {
 
   build() {
     Column() {
-      List({ space: 20, initialIndex: 0 }) {
+      List({initialIndex: 0 }) {
         ForEach(this.arr, (item) => {
           ListItem() {
             Text(item)
-              .width('100%').height(100).fontSize(16)
-              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+              .fontSize(16)
+              .width('100%').height(30)
+              .textAlign(TextAlign.Center).backgroundColor(0xFFFFFF)
               .onClick((time) =>{
-                this.time = item
-                console.log(this.time)
+                this.callback(item, this.where,this.dayInd)
                 this.controller.close()
               })
           }
         }, item => item)
       }
-      .listDirection(Axis.Vertical) // Arrangement direction
-      .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 }) // Divider line
-      .edgeEffect(EdgeEffect.None) // No effect when sliding to the edge
-      .chainAnimation(false)
-    }.borderRadius(10)
+      .listDirection(Axis.Vertical)
+      .divider({ strokeWidth: 2, color: 0xd5d9de })
+      .edgeEffect(EdgeEffect.Spring)
+    }.height('30%').width('50%')
   }
 }
 
@@ -50,7 +52,9 @@ export struct businessDayAndTime {
   @State private fromTime : string = "Set Time";
   @State private toTime : string = "Set Time";
   @State private isUseMilitaryTime: boolean = true;
-  @State fTime : string = "Ftime"
+  @State fTime : string = ""
+  @State tTime : string = ""
+  where : string = "from"
   business : Business
   getTime(t : string){
     if (t.length==1){
@@ -62,11 +66,27 @@ export struct businessDayAndTime {
   }
   dialogController: CustomDialogController = new CustomDialogController({
     builder: CustomDialogExample({
-      time:this.fTime
+      time:this.fTime,
+      where: this.where,
+      dayInd: this.dayIndex,
+      callback:(selIndex) => this.cb(selIndex,this.where, this.dayIndex)
     }),
     autoCancel: true,
+    customStyle: true,
+    alignment: DialogAlignment.Default
   })
 
+  cb(selIndex : string, what : string,dayInd: number) {
+    console.log("selIndex=" + selIndex)
+    if (what === "from"){
+      this.fTime = selIndex
+      this.business.setFromTime(dayInd,this.fTime)
+    }
+    else{
+      this.tTime = selIndex
+      this.business.setToTime(dayInd,this.tTime)
+    }
+  }
   build(){
     Column(){
       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
@@ -89,56 +109,26 @@ export struct businessDayAndTime {
         Flex({justifyContent:FlexAlign.SpaceBetween,  alignItems: ItemAlign.Center}){
           Flex({justifyContent:FlexAlign.SpaceBetween,  alignItems: ItemAlign.Center}) {
             Column(){
-              Text(this.fTime).fontSize(this.size-2)
-              .onClick(() =>{
+              Flex({justifyContent:FlexAlign.SpaceBetween}){
+                Text(this.fTime).fontSize(this.size-2)
+                Image($r('app.media.drop')).height(20).width(20)
+              }.onClick(() =>{
+                this.where = "from"
                 this.dialogController.open()
-                console.log(this.fTime)
               })
-//              Text(this.fromTime).onClick(() =>{
-//                TimePickerDialog.show({
-//                  useMilitaryTime: this.isUseMilitaryTime,
-//                  selected: new Date('09-00'),
-//
-//                  onAccept: (value: TimePickerResult) => {
-//                    this.fromTime = this.getTime(value.hour.toString()) + ":" + this.getTime(value.minute.toString())
-//                    this.business.setFromTime(this.dayIndex,this.fromTime)
-//
-//                  },
-//                  onCancel: () => {
-//                    this.fromTime = "Set Time"
-//                    this.toTime = "Set Time"
-//                  },
-//                  onChange: (value: TimePickerResult) => {
-//                    this.fromTime = this.getTime(value.hour.toString()) + ":" + this.getTime(value.minute.toString())
-//                    this.business.setFromTime(this.dayIndex,this.fromTime)
-//                  },
-//                })
-//              }).fontSize(this.size-5).padding({top:20})
-            }
+            }.padding({right:5})
 
             Column(){
-              Text("To").fontSize(this.size-3)
-              Text(this.toTime).onClick(() =>{
-                TimePickerDialog.show({
-                  useMilitaryTime: this.isUseMilitaryTime,
-                  selected: new Date('17-00'),
-                  onAccept: (value: TimePickerResult) => {
-                    this.toTime = this.getTime(value.hour.toString()) + ":" + this.getTime(value.minute.toString())
-                    this.business.setToTime(this.dayIndex,this.toTime)
-                  },
-                  onCancel: () => {
-                    this.fromTime = "Set Time"
-                    this.toTime = "Set Time"
-                  },
-                  onChange: (value: TimePickerResult) => {
-                    this.toTime = this.getTime(value.hour.toString()) + ":" + this.getTime(value.minute.toString())
-                    this.business.setToTime(this.dayIndex,this.toTime)
-                  }
-                })
-              }).fontSize(this.size-5).padding({top:20})
+              Flex({justifyContent:FlexAlign.SpaceBetween}){
+                Text(this.tTime).fontSize(this.size-2)
+                Image($r('app.media.drop')).height(20).width(20)
+              }.onClick(() =>{
+                this.where = "from"
+                this.dialogController.open()
+              })
             }
           }
-        }.padding({left:20, right: 20}).visibility(Visibility.Visible)
+        }.padding({right: 20}).visibility(Visibility.Visible)
       }
     }
   }
