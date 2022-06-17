@@ -100,6 +100,8 @@ export struct businessDayAndTime {
             if (!isOn){
               this.fromTime = "Set Time"
               this.toTime = "Set Time"
+              this.fTime = ""
+              this.tTime = ""
               this.business.reset()
             }
           })
@@ -123,7 +125,7 @@ export struct businessDayAndTime {
                 Text(this.tTime).fontSize(this.size-2)
                 Image($r('app.media.drop')).height(20).width(20)
               }.onClick(() =>{
-                this.where = "from"
+                this.where = "to"
                 this.dialogController.open()
               })
             }

@@ -41,44 +41,50 @@ export struct Viewer{
     Scroll(this.scroller) {
       Column() {
           Column({ space: 10 }) {
-            Flex({justifyContent:FlexAlign.SpaceBetween}) {
-              if (this.isWorking(this.finalBusinessModel,1)){
-                Text("Monday").fontSize(this.size).fontColor(this.getColor(1))
-                Text(this.getText(this.finalBusinessModel,1)).fontSize(this.size).fontColor(this.getColor(1))
+            if (this.isWorking(this.finalBusinessModel,1)){
+                Flex({justifyContent:FlexAlign.SpaceBetween}) {
+                  Text("Monday").fontSize(this.size).fontColor(this.getColor(1))
+                  Text(this.getText(this.finalBusinessModel,1)).fontSize(this.size).fontColor(this.getColor(1))
               }
             }
-            Flex({justifyContent:FlexAlign.SpaceBetween}) {
-              if (this.isWorking(this.finalBusinessModel,2)){
+
+            if (this.isWorking(this.finalBusinessModel,2)){
+              Flex({justifyContent:FlexAlign.SpaceBetween}) {
                 Text("Tuesday").fontSize(this.size).fontColor(this.getColor(2))
                 Text(this.getText(this.finalBusinessModel,2)).fontSize(this.size).fontColor(this.getColor(2))
               }
             }
-            Flex({justifyContent:FlexAlign.SpaceBetween}) {
-              if (this.isWorking(this.finalBusinessModel,3)) {
+
+            if (this.isWorking(this.finalBusinessModel,3)) {
+              Flex({justifyContent:FlexAlign.SpaceBetween}) {
                 Text("Wednesday").fontSize(this.size).fontColor(this.getColor(3))
                 Text(this.getText(this.finalBusinessModel,3)).fontSize(this.size).fontColor(this.getColor(3))
               }
             }
-            Flex({justifyContent:FlexAlign.SpaceBetween}) {
-              if (this.isWorking(this.finalBusinessModel,4)) {
+
+            if (this.isWorking(this.finalBusinessModel,4)) {
+              Flex({justifyContent:FlexAlign.SpaceBetween}) {
                 Text("Thursday").fontSize(this.size).fontColor(this.getColor(4))
                 Text(this.getText(this.finalBusinessModel,4)).fontSize(this.size).fontColor(this.getColor(4))
               }
             }
-            Flex({justifyContent:FlexAlign.SpaceBetween}) {
-              if (this.isWorking(this.finalBusinessModel,5)) {
+
+            if (this.isWorking(this.finalBusinessModel,5)) {
+              Flex({justifyContent:FlexAlign.SpaceBetween}) {
                 Text("Friday").fontSize(this.size).fontColor(this.getColor(5))
                 Text(this.getText(this.finalBusinessModel,5)).fontSize(this.size).fontColor(this.getColor(5))
               }
             }
-            Flex({justifyContent:FlexAlign.SpaceBetween}) {
-              if (this.isWorking(this.finalBusinessModel,6)) {
+
+            if (this.isWorking(this.finalBusinessModel,6)) {
+              Flex({justifyContent:FlexAlign.SpaceBetween}) {
                 Text("Saturday").fontSize(this.size).fontColor(this.getColor(6))
                 Text(this.getText(this.finalBusinessModel,6)).fontSize(this.size).fontColor(this.getColor(6))
               }
             }
-            Flex({justifyContent:FlexAlign.SpaceBetween}) {
-              if (this.isWorking(this.finalBusinessModel,7)) {
+
+            if (this.isWorking(this.finalBusinessModel,7)) {
+              Flex({justifyContent:FlexAlign.SpaceBetween}) {
                 Text("Sunday").fontSize(this.size).fontColor(this.getColor(7))
                 Text(this.getText(this.finalBusinessModel,7)).fontSize(this.size).fontColor(this.getColor(7))
               }
