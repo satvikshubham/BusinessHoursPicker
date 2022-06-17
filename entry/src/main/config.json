@@ -56,7 +56,7 @@
         },
         "pages": [
           "pages/index",
-          "pages/viewerIndex"
+          "pages/viewerIndex",
         ],
         "name": ".MainAbility",
         "window": {

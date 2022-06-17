@@ -7,6 +7,7 @@ import prompt from '@system.prompt';
 @Component
 struct indexAtr {
   finalBusinessModel : Business  = new Business()
+  day : string [] = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
   @State tempModel : Business = new Business()
   business : Business  = new Business();
   working : boolean[] = [false,false,false,false,false,false,false];
@@ -21,23 +22,35 @@ struct indexAtr {
             working : this.working,
             business: this.business
           })
-          Flex ({justifyContent: FlexAlign.SpaceBetween, direction: FlexDirection.Row}) {
-            Button('Apply', { type: ButtonType.Capsule })
+          Row() {
+            Button('Apply', { type: ButtonType.Normal })
               .onClick((event: ClickEvent) => {
+                var done : boolean = true
                 this.finalBusinessModel.reset()
+                console.log(this.working.toString())
                 for(var i :number = 0;i <7;i++){
                   if (this.working[i] == true){
+                    console.log(this.finalBusinessModel.getFromTime(i+1))
+                    if (this.business.getFromTime(i+1) === "Set Time"||this.business.getToTime(i+1) === "Set Time"){
+                      prompt.showToast({
+                        message: "Set the from and to time properly for the date: " + this.day[i].toString()
+                      })
+                      done = false
+                      break
+                    }
                     this.finalBusinessModel.setWorkingDay(i+1, true)
                     this.finalBusinessModel.setFromTime(i+1,this.business.getFromTime(i+1))
                     this.finalBusinessModel.setToTime(i+1,this.business.getToTime(i+1))
                   }
                 }
-                this.tempModel = this.finalBusinessModel
-                prompt.showToast({
-                  message: "Saved"
-                })
-              })
-            Button('View', { type: ButtonType.Capsule })
+                if (done){
+                  this.tempModel = this.finalBusinessModel
+                  prompt.showToast({
+                    message: "Saved"
+                  })
+                }
+              }).width('50%').backgroundColor(0x7aa150)
+            Button('View', { type: ButtonType.Normal })
               .onClick(() => {
                 console.log(JSON.stringify(this.finalBusinessModel))
                 router.push({
@@ -45,8 +58,8 @@ struct indexAtr {
                   params:{
                     finalBusinessModel : this.tempModel,
                   }});
-              })
-          }.padding({left:20, right: 20})
+              }).width('50%')
+          }.padding({left:20, right: 20}).alignSelf(ItemAlign.Center)
         }
       }
     }
