@@ -1,6 +1,5 @@
 import {Business} from './Business';
 
-
 @Component
 
 export struct Viewer{
@@ -89,9 +88,8 @@ export struct Viewer{
                 Text(this.getText(this.finalBusinessModel,7)).fontSize(this.size).fontColor(this.getColor(7))
               }
             }
-
           }.alignItems(HorizontalAlign.Start)
-      }.padding(20).alignItems(HorizontalAlign.Center)
+      }.padding(20)
     }
   }
 }

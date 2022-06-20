@@ -18,7 +18,6 @@ struct CustomDialogExample {
   transfer(index : string){
     return index
   }
-
   build() {
     Column() {
       List({initialIndex: 0 }) {

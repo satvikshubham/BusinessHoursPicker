@@ -26,12 +26,9 @@ struct indexAtr {
             Button('Apply', { type: ButtonType.Normal })
               .onClick((event: ClickEvent) => {
                 var done : boolean = true
-                console.log(" Hello " +JSON.stringify(this.business))
                 this.finalBusinessModel.reset()
-                console.log(this.working.toString())
                 for(var i :number = 0;i <7;i++){
                   if (this.working[i] == true){
-                    console.log(this.finalBusinessModel.getFromTime(i+1))
                     if (this.business.getFromTime(i+1) === "Set Time"||this.business.getToTime(i+1) === "Set Time"){
                       prompt.showToast({
                         message: "Set the from and to time properly for the date: " + this.day[i].toString()
@@ -53,7 +50,6 @@ struct indexAtr {
               }).width('50%').backgroundColor(0x7aa150)
             Button('View', { type: ButtonType.Normal })
               .onClick(() => {
-                console.log(JSON.stringify(this.finalBusinessModel))
                 router.push({
                   uri : 'pages/viewerIndex',
                   params:{

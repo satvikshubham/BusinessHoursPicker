@@ -7,10 +7,6 @@ import router from '@system.router';
 @Entry
 struct ViewerIndex{
   finalBusinessModel : Business = <Business> router.getParams().finalBusinessModel;
-
-  aboutToAppear(){
-//    console.log(JSON.stringify(this.finalBusinessModel))
-  }
   build(){
     Column({space:10}){
         Viewer({
@@ -19,6 +15,6 @@ struct ViewerIndex{
       Button("Back").onClick(()=>{
         router.back()
       })
-    }.margin({top:'25%'})
+    }
   }
 }
