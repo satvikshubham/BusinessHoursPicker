@@ -1,8 +1,8 @@
 class Business {
     daysOfWeek: number[] = [1, 2, 3, 4, 5, 6, 7];
     private workingDays: boolean[] = [false, false, false, false, false, false, false];
-    private from: string[] = ["Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time"];
-    private to: string[] = ["Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time"];
+    private from: string[] = ["", "", "", "", "", "", ""]
+    private to: string[] = ["", "", "", "", "", "", ""]
     constructor(business? : Business) {
         if (business) {
             this.daysOfWeek = business.daysOfWeek
@@ -34,8 +34,8 @@ class Business {
     }
     reset = () :void =>{
         this.workingDays = [false, false, false, false, false, false, false]
-        this.from = ["Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time"]
-        this.to = ["Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time", "Set Time"]
+        this.from = ["", "", "", "", "", "", ""]
+        this.to = ["", "", "", "", "", "", ""]
     }
 }
 export {Business};

@@ -48,10 +48,9 @@ export struct businessDayAndTime {
   private dayIndex : number = 0;
   private size : number = 15;
   working : boolean[]
-  @State private fromTime : string = "Set Time";
-  @State private toTime : string = "Set Time";
   @State fTime : string = ""
   @State tTime : string = ""
+  @State toggle : boolean = false
   where : string = "from"
   business : Business
 
@@ -78,22 +77,26 @@ export struct businessDayAndTime {
       this.business.setToTime(dayInd,this.tTime)
     }
   }
+
   temp : Resource = $r('app.media.drop')
+
   build(){
     Column(){
       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
         Text(this.day).fontSize(this.size)
-        Toggle({ type: ToggleType.Switch})
+        Toggle({ type: ToggleType.Switch, isOn : this.toggle})
           .selectedColor(0x39a2db)
           .switchPointColor(0xe5ffffff)
-          .onChange((isOn: boolean) => {
+          .onChange((isOn: boolean = this.toggle) => {
+            if (isOn){
+              this.toggle = true;
+            }
             this.business.setWorkingDay(this.dayIndex,isOn);
             this.working[this.dayIndex - 1] = isOn;
             if (!isOn){
-              this.fromTime = "Set Time"
-              this.toTime = "Set Time"
               this.fTime = ""
               this.tTime = ""
+              this.toggle = false
               this.business.reset()
             }
           })

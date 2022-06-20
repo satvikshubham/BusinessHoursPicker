@@ -20,7 +20,7 @@ export struct Viewer{
   }
   getText (business:Business, dayInd :number){
     var a : string = ""
-    if (business.getFromTime(dayInd) == "Set Time" || business.getToTime(dayInd) == "Set Time" || !business.isWorkingDay(dayInd)){
+    if (business.getFromTime(dayInd) == "" || business.getToTime(dayInd) == "" || !business.isWorkingDay(dayInd)){
 
     }
     else{

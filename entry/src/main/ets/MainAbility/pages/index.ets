@@ -29,7 +29,7 @@ struct indexAtr {
                 this.finalBusinessModel.reset()
                 for(var i :number = 0;i <7;i++){
                   if (this.working[i] == true){
-                    if (this.business.getFromTime(i+1) === "Set Time"||this.business.getToTime(i+1) === "Set Time"){
+                    if (this.business.getFromTime(i+1) === ""||this.business.getToTime(i+1) === ""){
                       prompt.showToast({
                         message: "Set the from and to time properly for the date: " + this.day[i].toString()
                       })
