@@ -36,19 +36,30 @@ export struct Viewer{
       return 'black'
     }
   }
+
+  getImage = (bus: Business, dI): Resource => {
+    if (dI == this.dat){
+      return $r('app.media.unlock')
+    }
+    else{
+      return $r('app.media.calendar')
+    }
+  }
   build(){
     Scroll(this.scroller) {
       Column() {
           Column({ space: 10 }) {
             if (this.isWorking(this.finalBusinessModel,1)){
                 Flex({justifyContent:FlexAlign.SpaceBetween}) {
+                  Image(this.getImage(this.finalBusinessModel,1)).width(20).height(20).objectFit(ImageFit.ScaleDown)
                   Text("Monday").fontSize(this.size).fontColor(this.getColor(1))
                   Text(this.getText(this.finalBusinessModel,1)).fontSize(this.size).fontColor(this.getColor(1))
               }
             }
 
             if (this.isWorking(this.finalBusinessModel,2)){
-              Flex({justifyContent:FlexAlign.SpaceBetween}) {
+                Flex({justifyContent:FlexAlign.SpaceBetween}) {
+                  Image(this.getImage(this.finalBusinessModel,2)).width(20).height(20).objectFit(ImageFit.ScaleDown)
                 Text("Tuesday").fontSize(this.size).fontColor(this.getColor(2))
                 Text(this.getText(this.finalBusinessModel,2)).fontSize(this.size).fontColor(this.getColor(2))
               }
@@ -56,6 +67,7 @@ export struct Viewer{
 
             if (this.isWorking(this.finalBusinessModel,3)) {
               Flex({justifyContent:FlexAlign.SpaceBetween}) {
+                Image(this.getImage(this.finalBusinessModel,3)).width(20).height(20).objectFit(ImageFit.ScaleDown)
                 Text("Wednesday").fontSize(this.size).fontColor(this.getColor(3))
                 Text(this.getText(this.finalBusinessModel,3)).fontSize(this.size).fontColor(this.getColor(3))
               }
@@ -63,6 +75,7 @@ export struct Viewer{
 
             if (this.isWorking(this.finalBusinessModel,4)) {
               Flex({justifyContent:FlexAlign.SpaceBetween}) {
+                Image(this.getImage(this.finalBusinessModel,4)).width(20).height(20).objectFit(ImageFit.ScaleDown)
                 Text("Thursday").fontSize(this.size).fontColor(this.getColor(4))
                 Text(this.getText(this.finalBusinessModel,4)).fontSize(this.size).fontColor(this.getColor(4))
               }
@@ -70,6 +83,7 @@ export struct Viewer{
 
             if (this.isWorking(this.finalBusinessModel,5)) {
               Flex({justifyContent:FlexAlign.SpaceBetween}) {
+                Image(this.getImage(this.finalBusinessModel,5)).width(20).height(20).objectFit(ImageFit.ScaleDown)
                 Text("Friday").fontSize(this.size).fontColor(this.getColor(5))
                 Text(this.getText(this.finalBusinessModel,5)).fontSize(this.size).fontColor(this.getColor(5))
               }
@@ -77,6 +91,7 @@ export struct Viewer{
 
             if (this.isWorking(this.finalBusinessModel,6)) {
               Flex({justifyContent:FlexAlign.SpaceBetween}) {
+                Image(this.getImage(this.finalBusinessModel,6)).width(20).height(20).objectFit(ImageFit.ScaleDown)
                 Text("Saturday").fontSize(this.size).fontColor(this.getColor(6))
                 Text(this.getText(this.finalBusinessModel,6)).fontSize(this.size).fontColor(this.getColor(6))
               }
@@ -84,6 +99,7 @@ export struct Viewer{
 
             if (this.isWorking(this.finalBusinessModel,7)) {
               Flex({justifyContent:FlexAlign.SpaceBetween}) {
+                Image(this.getImage(this.finalBusinessModel,7)).width(20).height(20).objectFit(ImageFit.ScaleDown)
                 Text("Sunday").fontSize(this.size).fontColor(this.getColor(7))
                 Text(this.getText(this.finalBusinessModel,7)).fontSize(this.size).fontColor(this.getColor(7))
               }

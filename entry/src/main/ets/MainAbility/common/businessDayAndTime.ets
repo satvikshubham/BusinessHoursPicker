@@ -86,6 +86,7 @@ export struct businessDayAndTime {
       this.business.setToTime(dayInd,this.tTime)
     }
   }
+  temp : Resource = $r('app.media.drop')
   build(){
     Column(){
       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
@@ -112,7 +113,7 @@ export struct businessDayAndTime {
             Column(){
               Flex({justifyContent:FlexAlign.SpaceBetween}){
                 Text(this.fTime).fontSize(this.size-2)
-                Image($r('app.media.drop')).height(20).width(20)
+                Image(this.temp).height(20).width(20)
               }.onClick(() =>{
                 this.where = "from"
                 this.dialogController.open()
@@ -122,7 +123,7 @@ export struct businessDayAndTime {
             Column(){
               Flex({justifyContent:FlexAlign.SpaceBetween}){
                 Text(this.tTime).fontSize(this.size-2)
-                Image($r('app.media.drop')).height(20).width(20)
+                Image(this.temp).height(20).width(20)
               }.onClick(() =>{
                 this.where = "to"
                 this.dialogController.open()
