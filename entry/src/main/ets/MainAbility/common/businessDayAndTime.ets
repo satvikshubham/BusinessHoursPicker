@@ -50,19 +50,11 @@ export struct businessDayAndTime {
   working : boolean[]
   @State private fromTime : string = "Set Time";
   @State private toTime : string = "Set Time";
-  @State private isUseMilitaryTime: boolean = true;
   @State fTime : string = ""
   @State tTime : string = ""
   where : string = "from"
   business : Business
-  getTime(t : string){
-    if (t.length==1){
-      return "0"+t;
-    }
-    else{
-      return t;
-    }
-  }
+
   dialogController: CustomDialogController = new CustomDialogController({
     builder: CustomDialogExample({
       time:this.fTime,
@@ -122,7 +114,7 @@ export struct businessDayAndTime {
 
             Column(){
               Flex({justifyContent:FlexAlign.SpaceBetween}){
-                Text(this.tTime).fontSize(this.size-2)
+                Text(this.tTime).fontSize(this.size-2).margin({left:5})
                 Image(this.temp).height(20).width(20)
               }.onClick(() =>{
                 this.where = "to"
@@ -131,6 +123,10 @@ export struct businessDayAndTime {
             }
           }
         }.padding({right: 20}).visibility(Visibility.Visible)
+        Flex({justifyContent:FlexAlign.SpaceBetween}){
+          Divider().width(120)
+          Divider().width(120).margin({right:30})
+        }
       }
     }
   }
