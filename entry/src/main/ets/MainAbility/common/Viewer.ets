@@ -23,11 +23,8 @@ export struct Viewer {
     var a: string = ""
     if (business.getFromTime(dayInd) == "" && !business.isWorkingDay(dayInd)) {
     }
-    else if (business.getToTime(dayInd) == "" && business.isWorkingDay(dayInd))  {
-      a = business.getFromTime(dayInd)
-    }
     else {
-      a = business.getFromTime(dayInd) + " to " + business.getToTime(dayInd)
+      a = business.getFromTime(dayInd) + " - " + business.getToTime(dayInd)
     }
     return a;
   }
@@ -53,7 +50,6 @@ export struct Viewer {
   build() {
       Column() {
         Column({ space: 10 }) {
-
           if (this.isWorking(this.finalBusinessModel, 1)) {
             Flex({ justifyContent: FlexAlign.SpaceBetween }) {
               Image(this.getImage(this.finalBusinessModel, 1)).width(20).height(20).objectFit(ImageFit.ScaleDown)
@@ -110,6 +106,6 @@ export struct Viewer {
             }
           }
         }.alignItems(HorizontalAlign.Start)
-      }.padding(20)
+      }.padding(20).backgroundColor(0xFFFFFF)
     }
 }

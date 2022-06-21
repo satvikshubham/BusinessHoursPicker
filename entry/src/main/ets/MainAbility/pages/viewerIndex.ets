@@ -13,6 +13,6 @@ struct ViewerIndex {
       Viewer({
         finalBusinessModel: this.finalBusinessModel
       })
-    }
+    }.backgroundColor(0xd4d5d6).height('100%').justifyContent(FlexAlign.Center)
   }
 }

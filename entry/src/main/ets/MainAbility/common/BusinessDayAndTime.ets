@@ -103,7 +103,7 @@ export struct businessDayAndTime {
               this.business.setToTime(this.dayIndex, "")
             }
           })
-      }
+      }.height(40)
 
       if (this.working[this.dayIndex - 1]) {
         Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
@@ -128,12 +128,12 @@ export struct businessDayAndTime {
               })
             }
           }
-        }.padding({ right: 20 }).visibility(Visibility.Visible)
+        }.padding({top :20, right: 20 }).visibility(Visibility.Visible)
 
         Flex({ justifyContent: FlexAlign.SpaceBetween }) {
           Divider().width(120)
           Divider().width(120).margin({ right: 30 })
-        }
+        }.padding({bottom:20})
       }
     }
   }
