@@ -1,60 +1,92 @@
 import prompt from '@system.prompt';
-import {Business} from './Business';
-import {businessDayAndTime} from './businessDayAndTime';
-import {Viewer} from './Viewer'
+import { Business } from './Business';
+import { businessDayAndTime } from './BusinessDayAndTime';
+import { Viewer } from './Viewer'
+import router from '@system.router';
 
 @Entry
 @Preview
 @Component
-export struct BusinessPicker{
-  @State business : Business = new Business();
-  @State working : boolean[] = [false,false,false,false,false,false,false];
-  @State finalBusinessModel : Business = new Business()
-  scroller:Scroller=new Scroller();
+export struct BusinessPicker {
+  @State business: Business = new Business();
+  @State working: boolean[] = [false, false, false, false, false, false, false];
+  day: string [] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  @State tempModel: Business = new Business()
+  @State selectedBusinessModel: Business = new Business()
+  scroller: Scroller= new Scroller();
+
   build() {
-      Column(){
-        businessDayAndTime({
-          dayIndex : 1,
-          day : "Monday",
-          business : this.business,
-          working : this.working
-        })
-        businessDayAndTime({
-          dayIndex : 2,
-          day : "Tuesday",
-          business : this.business,
-          working : this.working
-        })
-        businessDayAndTime({
-          dayIndex : 3,
-          day : "Wednesday",
-          business : this.business,
-          working : this.working
-        })
-        businessDayAndTime({
-          dayIndex : 4,
-          day : "Thursday",
-          business : this.business,
-          working : this.working
-        })
-        businessDayAndTime({
-          dayIndex : 5,
-          day : "Friday",
-          business : this.business,
-          working : this.working
-        })
-        businessDayAndTime({
-          dayIndex : 6,
-          day : "Saturday",
-          business : this.business,
-          working : this.working
-        })
-        businessDayAndTime({
-          dayIndex :7 ,
-          day : "Sunday",
-          business : this.business,
-          working : this.working
-        })
-      }.padding(20)
+    Column() {
+      businessDayAndTime({
+        dayIndex: 1,
+        day: "Monday",
+        business: this.business,
+        working: this.working
+      })
+      businessDayAndTime({
+        dayIndex: 2,
+        day: "Tuesday",
+        business: this.business,
+        working: this.working
+      })
+      businessDayAndTime({
+        dayIndex: 3,
+        day: "Wednesday",
+        business: this.business,
+        working: this.working
+      })
+      businessDayAndTime({
+        dayIndex: 4,
+        day: "Thursday",
+        business: this.business,
+        working: this.working
+      })
+      businessDayAndTime({
+        dayIndex: 5,
+        day: "Friday",
+        business: this.business,
+        working: this.working
+      })
+      businessDayAndTime({
+        dayIndex: 6,
+        day: "Saturday",
+        business: this.business,
+        working: this.working
+      })
+      businessDayAndTime({
+        dayIndex: 7,
+        day: "Sunday",
+        business: this.business,
+        working: this.working
+      })
+      Row() {
+        Button('Apply', { type: ButtonType.Normal })
+          .onClick((event: ClickEvent) => {
+            var done: boolean = this.business.isValid(this.working)
+            this.tempModel.reset()
+            if (done) {
+              for (var i: number = 0;i < 7; i++) {
+                if (this.working[i] == true) {
+                  this.tempModel.setWorkingDay(i + 1, true)
+                  this.tempModel.setFromTime(i + 1, this.business.getFromTime(i + 1))
+                  this.tempModel.setToTime(i + 1, this.business.getToTime(i + 1))
+                }
+              }
+              this.selectedBusinessModel = this.tempModel
+              prompt.showToast({
+                message: "Saved"
+              })
+            }
+          }).width('50%').backgroundColor(0x7aa150)
+        Button('View', { type: ButtonType.Normal })
+          .onClick(() => {
+            router.push({
+              uri: 'pages/viewerIndex',
+              params: {
+                finalBusinessModel: this.selectedBusinessModel,
+              } });
+          }).width('50%')
+      }.margin({ top: 20 }).alignSelf(ItemAlign.Center)
+    }.padding(20)
   }
 }
