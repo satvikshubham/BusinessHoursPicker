@@ -13,6 +13,7 @@ export struct BusinessPicker {
   day: string [] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   @State tempModel: Business = new Business()
   @State selectedBusinessModel: Business = new Business()
+  done : boolean
   scroller: Scroller= new Scroller();
 
   build() {
@@ -62,9 +63,9 @@ export struct BusinessPicker {
       Row() {
         Button('Apply', { type: ButtonType.Normal })
           .onClick((event: ClickEvent) => {
-            var done: boolean = this.business.isValid(this.working)
+            this.done = this.business.isValid(this.working)
             this.tempModel.reset()
-            if (done) {
+            if (this.done) {
               for (var i: number = 0;i < 7; i++) {
                 if (this.working[i] == true) {
                   this.tempModel.setWorkingDay(i + 1, true)
@@ -80,11 +81,18 @@ export struct BusinessPicker {
           }).width('50%').backgroundColor(0x7aa150)
         Button('View', { type: ButtonType.Normal })
           .onClick(() => {
-            router.push({
-              uri: 'pages/viewerIndex',
-              params: {
-                finalBusinessModel: this.selectedBusinessModel,
-              } });
+            if (this.done){
+              router.push({
+                uri: 'pages/viewerIndex',
+                params: {
+                  finalBusinessModel: this.selectedBusinessModel,
+                } });
+            }
+            else{
+              prompt.showToast({
+                message: "Correct changes"
+              })
+            }
           }).width('50%')
       }.margin({ top: 20 }).alignSelf(ItemAlign.Center)
     }.padding(20)

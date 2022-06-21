@@ -49,6 +49,7 @@ class Business {
             message: "Set the from and to time properly for the day: " + this.dayArr[i]
           })
           done = false
+          break
         }
       }
     }
