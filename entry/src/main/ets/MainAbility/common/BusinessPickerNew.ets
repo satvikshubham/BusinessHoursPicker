@@ -3,42 +3,42 @@ import { Business } from './Business';
 import { businessDayAndTime } from './BusinessDayAndTime';
 import router from '@system.router';
 
-@Entry
-@Preview
+
 @Component
 export struct BusinessPicker {
   @State business: Business = new Business();
   @State working: boolean[] = [false, false, false, false, false, false, false];
   day: string [] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-  @State tempModel: Business = new Business()
   @State selectedBusinessModel: Business = new Business()
-  done : boolean
+  done: boolean
   scroller: Scroller= new Scroller();
-  arr : number[] = [0,1,2,3,4,5,6]
+  arr: number[] = [0, 1, 2, 3, 4, 5, 6]
+
   build() {
     Column() {
       ForEach(this.arr,
-        item => {businessDayAndTime({
-          dayIndex: item+1,
-          day: this.day[item],
-          business: this.business,
-          working: this.working
-        })}
+        item => {
+          businessDayAndTime({
+            dayIndex: item + 1,
+            day: this.day[item],
+            business: this.business,
+            working: this.working
+          })
+        }
       )
       Row() {
         Button('Apply', { type: ButtonType.Normal })
           .onClick((event: ClickEvent) => {
             this.done = this.business.isValid(this.working)
-            this.tempModel.reset()
+            this.selectedBusinessModel.reset()
             if (this.done) {
               for (var i: number = 0;i < 7; i++) {
                 if (this.working[i] == true) {
-                  this.tempModel.setWorkingDay(i + 1, true)
-                  this.tempModel.setFromTime(i + 1, this.business.getFromTime(i + 1))
-                  this.tempModel.setToTime(i + 1, this.business.getToTime(i + 1))
+                  this.selectedBusinessModel.setWorkingDay(i + 1, true)
+                  this.selectedBusinessModel.setFromTime(i + 1, this.business.getFromTime(i + 1))
+                  this.selectedBusinessModel.setToTime(i + 1, this.business.getToTime(i + 1))
                 }
               }
-              this.selectedBusinessModel = this.tempModel
               prompt.showToast({
                 message: "Saved"
               })
@@ -46,14 +46,14 @@ export struct BusinessPicker {
           }).width('50%').backgroundColor(0x7aa150)
         Button('View', { type: ButtonType.Normal })
           .onClick(() => {
-            if (this.done){
+            if (this.done) {
               router.push({
                 uri: 'pages/viewerIndex',
                 params: {
                   finalBusinessModel: this.selectedBusinessModel,
                 } });
             }
-            else{
+            else {
               prompt.showToast({
                 message: "Correct changes"
               })

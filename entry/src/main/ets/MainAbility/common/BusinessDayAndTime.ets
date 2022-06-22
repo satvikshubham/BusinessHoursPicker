@@ -31,7 +31,7 @@ struct CustomDialogExample {
               .padding(10)
               .textAlign(TextAlign.Center)
               .backgroundColor(0xFFFFFF)
-              .onClick((time) => {
+              .onClick(() => {
                 this.callback(item, this.where, this.dayInd)
                 this.controller.close()
               })
@@ -129,12 +129,12 @@ export struct businessDayAndTime {
               })
             }
           }
-        }.padding({top :20, right: 20 }).visibility(Visibility.Visible)
+        }.padding({ top: 20, right: 20 }).visibility(Visibility.Visible)
 
         Flex({ justifyContent: FlexAlign.SpaceBetween }) {
           Divider().width(120)
           Divider().width(120).margin({ right: 30 })
-        }.padding({bottom:20})
+        }.padding({ bottom: 20 })
       }
     }
   }

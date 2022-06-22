@@ -12,15 +12,9 @@ struct indexAtr {
       Column() {
         Flex({ direction: FlexDirection.Column, alignContent: FlexAlign.SpaceBetween }) {
           BusinessPicker({
-            tempModel: this.finalBusinessModel,
+            selectedBusinessModel: this.finalBusinessModel,
           })
         }
-//        Row(){
-//          Button('Apply', {type:ButtonType.Normal}).width('50%').backgroundColor(0x7aa150)
-//          .onClick(()=>{
-//            console.log(JSON.stringify(this.finalBusinessModel))
-//          })
-//        }.margin({ top: 20 }).alignSelf(ItemAlign.Center)
       }
     }
   }
