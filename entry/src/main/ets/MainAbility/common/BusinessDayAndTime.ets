@@ -52,7 +52,6 @@ export struct businessDayAndTime {
   private day: string = "";
   private dayIndex: number = 0;
   private size: number = 15;
-  working: boolean[]
   @State fTime: string = ""
   @State tTime: string = ""
   @State toggle: boolean = false
@@ -95,7 +94,6 @@ export struct businessDayAndTime {
               this.toggle = true;
             }
             this.business.setWorkingDay(this.dayIndex, isOn);
-            this.working[this.dayIndex - 1] = isOn;
             if (!isOn) {
               this.fTime = ""
               this.tTime = ""
@@ -106,7 +104,7 @@ export struct businessDayAndTime {
           })
       }.height(40)
 
-      if (this.working[this.dayIndex - 1]) {
+      if (this.business.isWorkingDay(this.dayIndex)) {
         Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
           Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
             Column() {

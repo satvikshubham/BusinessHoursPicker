@@ -7,7 +7,6 @@ import router from '@system.router';
 @Component
 export struct BusinessPicker {
   @State business: Business = new Business();
-  @State working: boolean[] = [false, false, false, false, false, false, false];
   day: string [] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   @State selectedBusinessModel: Business = new Business()
   done: boolean
@@ -22,18 +21,17 @@ export struct BusinessPicker {
             dayIndex: item + 1,
             day: this.day[item],
             business: this.business,
-            working: this.working
           })
         }
       )
       Row() {
         Button('Apply', { type: ButtonType.Normal })
           .onClick((event: ClickEvent) => {
-            this.done = this.business.isValid(this.working)
+            this.done = this.business.isValid(this.business.getWorkingDays())
             this.selectedBusinessModel.reset()
             if (this.done) {
               for (var i: number = 0;i < 7; i++) {
-                if (this.working[i] == true) {
+                if (this.business.isWorkingDay(i+1) == true) {
                   this.selectedBusinessModel.setWorkingDay(i + 1, true)
                   this.selectedBusinessModel.setFromTime(i + 1, this.business.getFromTime(i + 1))
                   this.selectedBusinessModel.setToTime(i + 1, this.business.getToTime(i + 1))
