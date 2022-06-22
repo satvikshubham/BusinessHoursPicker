@@ -56,7 +56,7 @@ export struct businessDayAndTime {
   @State tTime: string = ""
   @State toggle: boolean = false
   where: string = "from"
-  business: Business
+  @Link business: Business
   dialogController: CustomDialogController = new CustomDialogController({
     builder: CustomDialogExample({
       time: this.fTime,
@@ -100,6 +100,7 @@ export struct businessDayAndTime {
               this.toggle = false
               this.business.setFromTime(this.dayIndex, "")
               this.business.setToTime(this.dayIndex, "")
+              this.business.setWorkingDay(this.dayIndex,false)
             }
           })
       }.height(40)
