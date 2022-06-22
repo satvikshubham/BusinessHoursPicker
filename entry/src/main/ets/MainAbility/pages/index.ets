@@ -1,5 +1,4 @@
-import { BusinessPicker } from '../common/BusinessPickerNew';
-import { Business } from '../common/Business';
+import {Business,BusinessPicker} from '@ohos/bhlib'
 import prompt from '@system.prompt';
 import router from '@system.router';
 
@@ -35,7 +34,6 @@ struct indexAtr {
                 message: "Saved"
               })
             }
-            console.log(JSON.stringify(this.finalBusinessModel))
           }).width('50%').backgroundColor(0x7aa150)
           Button('View', { type: ButtonType.Normal })
             .onClick(() => {

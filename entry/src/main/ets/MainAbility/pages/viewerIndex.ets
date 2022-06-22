@@ -1,5 +1,4 @@
-import { Viewer } from '../common/Viewer';
-import { Business } from '../common/Business';
+import {Viewer, Business} from '@ohos/bhlib'
 import router from '@system.router';
 
 @Component

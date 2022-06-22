@@ -1,6 +1,6 @@
 import prompt from '@system.prompt';
 
-class Business {
+export class Business {
   private workingDays: boolean[] = [false, false, false, false, false, false, false];
   private from: string[] = ["", "", "", "", "", "", ""]
   private to: string[] = ["", "", "", "", "", "", ""]
@@ -56,5 +56,3 @@ class Business {
     return done
   }
 }
-
-export { Business };
