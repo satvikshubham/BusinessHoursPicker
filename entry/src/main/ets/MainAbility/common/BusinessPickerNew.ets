@@ -14,51 +14,17 @@ export struct BusinessPicker {
   @State selectedBusinessModel: Business = new Business()
   done : boolean
   scroller: Scroller= new Scroller();
-
+  arr : number[] = [0,1,2,3,4,5,6]
   build() {
     Column() {
-      businessDayAndTime({
-        dayIndex: 1,
-        day: "Monday",
-        business: this.business,
-        working: this.working
-      })
-      businessDayAndTime({
-        dayIndex: 2,
-        day: "Tuesday",
-        business: this.business,
-        working: this.working
-      })
-      businessDayAndTime({
-        dayIndex: 3,
-        day: "Wednesday",
-        business: this.business,
-        working: this.working
-      })
-      businessDayAndTime({
-        dayIndex: 4,
-        day: "Thursday",
-        business: this.business,
-        working: this.working
-      })
-      businessDayAndTime({
-        dayIndex: 5,
-        day: "Friday",
-        business: this.business,
-        working: this.working
-      })
-      businessDayAndTime({
-        dayIndex: 6,
-        day: "Saturday",
-        business: this.business,
-        working: this.working
-      })
-      businessDayAndTime({
-        dayIndex: 7,
-        day: "Sunday",
-        business: this.business,
-        working: this.working
-      })
+      ForEach(this.arr,
+        item => {businessDayAndTime({
+          dayIndex: item+1,
+          day: this.day[item],
+          business: this.business,
+          working: this.working
+        })}
+      )
       Row() {
         Button('Apply', { type: ButtonType.Normal })
           .onClick((event: ClickEvent) => {

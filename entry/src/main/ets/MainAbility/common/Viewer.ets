@@ -49,12 +49,13 @@ export struct Viewer {
     Column({ space: 10 }) {
         ForEach(this.arr,
           item => {if (this.isWorking(this.finalBusinessModel, item +1)) {
-            Row({ space:5 }) {
+            Row({ space:10 }) {
               Image(this.getImage(this.finalBusinessModel,item + 1)).width(20).height(20).objectFit(ImageFit.ScaleDown)
               Text(this.dayArr[item] + ", " + this.getText(this.finalBusinessModel, item +1)).fontSize(this.size).fontColor(this.getColor(1))
             }.width('100%')
           }}
         )
-    }.alignItems(HorizontalAlign.Start).padding(20).backgroundColor(0xFFFFFF)
+    }.padding(20).backgroundColor(0xFFFFFF)
+    .justifyContent(FlexAlign.Center)
   }
 }

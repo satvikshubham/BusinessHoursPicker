@@ -5,7 +5,6 @@ import { Business } from '../common/Business';
 @Component
 struct indexAtr {
   finalBusinessModel: Business  = new Business()
-  business: Business  = new Business();
   scroller: Scroller = new Scroller();
 
   build() {
@@ -14,9 +13,14 @@ struct indexAtr {
         Flex({ direction: FlexDirection.Column, alignContent: FlexAlign.SpaceBetween }) {
           BusinessPicker({
             tempModel: this.finalBusinessModel,
-            business: this.business
           })
         }
+//        Row(){
+//          Button('Apply', {type:ButtonType.Normal}).width('50%').backgroundColor(0x7aa150)
+//          .onClick(()=>{
+//            console.log(JSON.stringify(this.finalBusinessModel))
+//          })
+//        }.margin({ top: 20 }).alignSelf(ItemAlign.Center)
       }
     }
   }

@@ -28,7 +28,7 @@ struct CustomDialogExample {
             Text(item)
               .fontSize(16)
               .width('100%')
-              .height(30)
+              .padding(10)
               .textAlign(TextAlign.Center)
               .backgroundColor(0xFFFFFF)
               .onClick((time) => {
@@ -41,7 +41,8 @@ struct CustomDialogExample {
       .listDirection(Axis.Vertical)
       .divider({ strokeWidth: 2, color: 0xd5d9de })
       .edgeEffect(EdgeEffect.Spring)
-    }.height('30%').width('50%')
+    }.height('30%').width('80%')
+    .borderRadius(20)
   }
 }
 

@@ -9,11 +9,10 @@ struct ViewerIndex {
   finalBusinessModel: Business = <Business> router.getParams().finalBusinessModel;
 
   build() {
-    Column({ space: 10 }) {
+    Flex({ justifyContent:FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Viewer({
         finalBusinessModel: this.finalBusinessModel
       })
-    }.backgroundColor(0xebebeb).height('100%')
-    .justifyContent(FlexAlign.Center)
+    }.backgroundColor(0xebebeb).width('100%').height('100%')
   }
 }
