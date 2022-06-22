@@ -3,7 +3,6 @@ import { Business } from './Business';
 @Component
 export struct Viewer {
   private finalBusinessModel: Business = undefined
-  days: string [] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   size: number = 20
   dat = new Date().getDay()
   color: string = 'black'
