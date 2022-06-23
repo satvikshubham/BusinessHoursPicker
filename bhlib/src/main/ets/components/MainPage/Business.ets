@@ -33,11 +33,7 @@ export class Business {
   getToTime = (day: number): string => {
     return this.to[day - 1];
   }
-  reset = (): void => {
-    this.workingDays = [false, false, false, false, false, false, false]
-    this.from = ["", "", "", "", "", "", ""]
-    this.to = ["", "", "", "", "", "", ""]
-  }
+
   isValid = (working: boolean[]): any => {
     var done = true;
     var message: string = ""
