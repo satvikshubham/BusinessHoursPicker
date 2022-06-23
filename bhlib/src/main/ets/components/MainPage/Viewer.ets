@@ -28,10 +28,10 @@ export struct Viewer {
   }
   getColor = (dayInd: number): string => {
     if (dayInd == this.dat) {
-      return 'green'
+      return '#4e754d'
     }
     else {
-      return 'black'
+      return '#000000'
     }
   }
   getImage = (bus: Business, dI): Resource => {
