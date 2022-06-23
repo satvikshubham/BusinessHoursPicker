@@ -2,12 +2,12 @@ import { Business } from './Business';
 
 @Component
 export struct BusinessHoursWeekView {
-  private finalBusinessModel: Business = undefined
+  private showBusinessModel: Business = undefined
   size: number = 20
   dat = new Date().getDay()
 
   aboutToAppear() {
-    this.finalBusinessModel = new Business(this.finalBusinessModel)
+    this.showBusinessModel = new Business(this.showBusinessModel)
   }
 
   isWorking = (business: Business, dayInd: number): boolean => {
@@ -48,10 +48,10 @@ export struct BusinessHoursWeekView {
     Column({ space: 10 }) {
       ForEach(this.arr,
         item => {
-          if (this.isWorking(this.finalBusinessModel, item + 1)) {
+          if (this.isWorking(this.showBusinessModel, item + 1)) {
             Row({ space: 10 }) {
-              Image(this.getImage(this.finalBusinessModel, item + 1)).width(20).height(20).objectFit(ImageFit.ScaleDown)
-              Text(this.dayArr[item] + ", " + this.getText(this.finalBusinessModel, item + 1))
+              Image(this.getImage(this.showBusinessModel, item + 1)).width(20).height(20).objectFit(ImageFit.ScaleDown)
+              Text(this.dayArr[item] + ", " + this.getText(this.showBusinessModel, item + 1))
                 .fontSize(this.size)
                 .fontColor(this.getColor(item + 1))
             }.width('100%')

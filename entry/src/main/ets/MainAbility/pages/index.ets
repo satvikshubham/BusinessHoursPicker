@@ -7,7 +7,6 @@ import router from '@system.router';
 struct Index {
   @State finalBusinessModel: Business  = new Business()
   scroller: Scroller = new Scroller();
-  tempBusiness : Business = new Business
   done : boolean
   build() {
     Scroll(this.scroller) {
@@ -15,29 +14,20 @@ struct Index {
         Flex({ direction: FlexDirection.Column, alignContent: FlexAlign.SpaceBetween }) {
           BusinessPicker({
             selectedBusinessModel: $finalBusinessModel,
-            business: this.tempBusiness
           })
         }
         Row(){
           Button("Apply", { type: ButtonType.Normal }).onClick(()=>{
-            var er = this.tempBusiness.isValid(this.tempBusiness.getWorkingDays())
+            var er = this.finalBusinessModel.isValid(this.finalBusinessModel.getWorkingDays())
             this.done = er.done
-            this.finalBusinessModel.reset()
-            if (this.done) {
-              for (var i: number = 0;i < 7; i++) {
-                if (this.tempBusiness.isWorkingDay(i+1) == true) {
-                  this.finalBusinessModel.setWorkingDay(i + 1, true)
-                  this.finalBusinessModel.setFromTime(i + 1, this.tempBusiness.getFromTime(i + 1))
-                  this.finalBusinessModel.setToTime(i + 1, this.tempBusiness.getToTime(i + 1))
-                }
-              }
-            }
             prompt.showToast({
               message: er.message
             })
           }).width('50%').backgroundColor(0x7aa150)
           Button('View', { type: ButtonType.Normal })
             .onClick(() => {
+              var er = this.finalBusinessModel.isValid(this.finalBusinessModel.getWorkingDays())
+              this.done = er.done
               if (this.done) {
                 router.push({
                   uri: 'pages/viewerIndex',
@@ -47,7 +37,7 @@ struct Index {
               }
               else {
                 prompt.showToast({
-                  message: "Correct changes"
+                  message: er.message
                 })
               }
             }).width('50%')

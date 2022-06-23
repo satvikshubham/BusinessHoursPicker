@@ -10,7 +10,7 @@ struct ViewerIndex {
   build() {
     Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       BusinessHoursWeekView({
-        finalBusinessModel: this.finalBusinessModel
+        showBusinessModel: this.finalBusinessModel
       })
     }.backgroundColor(0xebebeb).width('100%').height('100%')
   }

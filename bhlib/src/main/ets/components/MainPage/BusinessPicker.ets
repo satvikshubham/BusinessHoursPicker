@@ -45,7 +45,6 @@ export struct BusinessPickerDialog {
 
 @Component
 export struct BusinessPicker {
-  @State business: Business = new Business();
   day: string [] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   @Link selectedBusinessModel: Business
   arr: number[] = [0, 1, 2, 3, 4, 5, 6]
@@ -57,7 +56,7 @@ export struct BusinessPicker {
           BusinessDayAndTime({
             dayIndex: item + 1,
             day: this.day[item],
-            business: $business,
+            business: $selectedBusinessModel,
           })
         }
       )
