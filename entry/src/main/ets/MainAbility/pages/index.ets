@@ -20,8 +20,8 @@ struct Index {
         }
         Row(){
           Button("Apply", { type: ButtonType.Normal }).onClick(()=>{
-            var arr : any [] = this.tempBusiness.isValid(this.tempBusiness.getWorkingDays())
-            this.done = arr[0]
+            var er = this.tempBusiness.isValid(this.tempBusiness.getWorkingDays())
+            this.done = er.done
             this.finalBusinessModel.reset()
             if (this.done) {
               for (var i: number = 0;i < 7; i++) {
@@ -33,7 +33,7 @@ struct Index {
               }
             }
             prompt.showToast({
-              message: arr[1]
+              message: er.message
             })
           }).width('50%').backgroundColor(0x7aa150)
           Button('View', { type: ButtonType.Normal })

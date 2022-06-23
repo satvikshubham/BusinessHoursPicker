@@ -40,9 +40,8 @@ export class Business {
     this.from = ["", "", "", "", "", "", ""]
     this.to = ["", "", "", "", "", "", ""]
   }
-  isValid = (working: boolean[]): any[] => {
+  isValid = (working: boolean[]): any => {
     var done = true;
-    var arr: any [] = [];
     var message: string = ""
     for (var i: number = 0;i < 7; i++) {
       if (working[i] == true) {
@@ -56,8 +55,6 @@ export class Business {
     if (done) {
       message = "Saved"
     }
-    arr.push(done)
-    arr.push(message)
-    return arr
+    return {done, message}
   }
 }
