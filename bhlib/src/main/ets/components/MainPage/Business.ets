@@ -53,6 +53,6 @@ export class Business {
     if (done) {
       message = "Saved"
     }
-    return {done, message}
+    return { done, message }
   }
 }

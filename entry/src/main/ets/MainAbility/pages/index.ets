@@ -1,4 +1,4 @@
-import {Business,BusinessPicker} from '@ohos/bhlib'
+import { Business, BusinessPicker } from '@ohos/bhlib'
 import prompt from '@system.prompt';
 import router from '@system.router';
 
@@ -7,17 +7,23 @@ import router from '@system.router';
 struct Index {
   @State finalBusinessModel: Business  = new Business()
   scroller: Scroller = new Scroller();
-  done : boolean
+  done: boolean
+
   build() {
     Scroll(this.scroller) {
       Column() {
         Flex({ direction: FlexDirection.Column, alignContent: FlexAlign.SpaceBetween }) {
           BusinessPicker({
             selectedBusinessModel: $finalBusinessModel,
+            bhTextColor: '#000000',
+            bhTextSize: 20,
+            bhTextStyle: 'calibri',
+            bhFormat : 12
           })
         }
-        Row(){
-          Button("Apply", { type: ButtonType.Normal }).onClick(()=>{
+
+        Row() {
+          Button("Apply", { type: ButtonType.Normal }).onClick(() => {
             var er = this.finalBusinessModel.isValid(this.finalBusinessModel.getWorkingDays())
             this.done = er.done
             prompt.showToast({
@@ -41,7 +47,7 @@ struct Index {
                 })
               }
             }).width('50%')
-        }.padding({left:20, right:20})
+        }.padding({ left: 20, right: 20 })
       }
     }
   }

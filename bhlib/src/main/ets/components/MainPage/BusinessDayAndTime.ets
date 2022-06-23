@@ -7,12 +7,14 @@ export struct BusinessDayAndTime {
   @State fTime: string = ""
   @State tTime: string = ""
   where: string = "from"
+  bhFormat : number = 24
   private dayIndex: number = 0;
   dialogController: CustomDialogController = new CustomDialogController({
     builder: BusinessPickerDialog({
       time: this.fTime,
       where: this.where,
       dayInd: this.dayIndex,
+      format: this.bhFormat,
       callback: (selIndex) => this.cb(selIndex, this.where, this.dayIndex)
     }),
     autoCancel: true,
@@ -30,9 +32,11 @@ export struct BusinessDayAndTime {
       this.business.setToTime(dayInd, this.tTime)
     }
   }
+  bhTextColor: string = '#000000'
+  bhTextSize: number = 20
+  bhTextStyle: string = 'calibri'
 
   private day: string = "";
-  private size: number = 15;
   @State toggle: boolean = false
   @Link business: Business
   temp: Resource = $r('app.media.drop')
@@ -40,7 +44,7 @@ export struct BusinessDayAndTime {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-        Text(this.day).fontSize(this.size)
+        Text(this.day).fontSize(this.bhTextSize).fontColor(this.bhTextColor).fontFamily(this.bhTextStyle)
         Toggle({ type: ToggleType.Switch, isOn: this.toggle })
           .selectedColor(0x39a2db)
           .switchPointColor(0xe5ffffff)
@@ -64,7 +68,7 @@ export struct BusinessDayAndTime {
         Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
           Column() {
             Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-              Text(this.fTime).fontSize(this.size - 2)
+              Text(this.fTime).fontSize(this.bhTextSize - 2).fontColor(this.bhTextColor).fontFamily(this.bhTextStyle)
               Image(this.temp).height(20).width(20)
             }.onClick(() => {
               this.where = "from"
@@ -74,7 +78,7 @@ export struct BusinessDayAndTime {
 
           Column() {
             Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-              Text(this.tTime).fontSize(this.size - 2).margin({ left: 5 })
+              Text(this.tTime).fontSize(this.bhTextSize - 2).fontColor(this.bhTextColor).fontFamily(this.bhTextStyle).margin({ left: 5 })
               Image(this.temp).height(20).width(20)
             }.onClick(() => {
               this.where = "to"

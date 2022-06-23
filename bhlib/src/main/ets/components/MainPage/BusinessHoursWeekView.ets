@@ -3,11 +3,20 @@ import { Business } from './Business';
 @Component
 export struct BusinessHoursWeekView {
   private showBusinessModel: Business = undefined
-  size: number = 20
   dat = new Date().getDay()
+  bhIcon: Resource = $r('app.media.calendar')
+  bhIconPadding: number = 10
+  bhTextColor: string = '#000000'
+  bhTextSize: number = 20
+  bhTextStyle: string = 'calibri'
+  bhTodayColor: string = '#4e754d'
+  bhTodayStyle: string = 'calibri'
+  bhTodayTextSize: number = 20
+  bhTodayIcon: Resource = $r('app.media.unlock')
 
   aboutToAppear() {
     this.showBusinessModel = new Business(this.showBusinessModel)
+    console.log(this.bhIconPadding.toString())
   }
 
   isWorking = (business: Business, dayInd: number): boolean => {
@@ -15,6 +24,22 @@ export struct BusinessHoursWeekView {
       return false;
     }
     return true;
+  }
+  getFontStyle = (dayIndex: number): string => {
+    if (dayIndex == this.dat) {
+      return this.bhTodayStyle
+    }
+    else {
+      return this.bhTextStyle
+    }
+  }
+  getFontSize = (dayIndex: number): number => {
+    if (dayIndex == this.dat) {
+      return this.bhTodayTextSize
+    }
+    else {
+      return this.bhTextSize
+    }
   }
   getText = (business: Business, dayInd: number): string => {
     var a: string = ""
@@ -27,18 +52,18 @@ export struct BusinessHoursWeekView {
   }
   getColor = (dayInd: number): string => {
     if (dayInd == this.dat) {
-      return '#4e754d                     '
+      return this.bhTodayColor
     }
     else {
-      return '#000000'
+      return this.bhTextColor
     }
   }
   getImage = (bus: Business, dI): Resource => {
     if (dI == this.dat) {
-      return $r('app.media.unlock')
+      return this.bhTodayIcon
     }
     else {
-      return $r('app.media.calendar')
+      return this.bhIcon
     }
   }
   arr: number[] = [0, 1, 2, 3, 4, 5, 6]
@@ -52,8 +77,10 @@ export struct BusinessHoursWeekView {
             Row({ space: 10 }) {
               Image(this.getImage(this.showBusinessModel, item + 1)).width(20).height(20).objectFit(ImageFit.ScaleDown)
               Text(this.dayArr[item] + ", " + this.getText(this.showBusinessModel, item + 1))
-                .fontSize(this.size)
+                .fontSize(this.getFontSize(item + 1))
                 .fontColor(this.getColor(item + 1))
+                .fontFamily(this.getFontStyle(item + 1))
+                .padding({left:this.bhIconPadding})
             }.width('100%')
           }
         }
