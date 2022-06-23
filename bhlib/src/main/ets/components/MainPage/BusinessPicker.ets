@@ -1,5 +1,5 @@
 import { Business } from './Business';
-import { businessDayAndTime } from './BusinessDayAndTime';
+import { BusinessDayAndTime } from './BusinessDayAndTime';
 
 @CustomDialog
 export struct BusinessPickerDialog {
@@ -16,10 +16,6 @@ export struct BusinessPickerDialog {
     "19:00", "20:00", "21:00", "22:00", "23:00",
   ]
   controller: CustomDialogController
-
-  transfer(index: string) {
-    return index
-  }
 
   build() {
     Column() {
@@ -42,7 +38,7 @@ export struct BusinessPickerDialog {
       .listDirection(Axis.Vertical)
       .divider({ strokeWidth: 2, color: 0xd5d9de })
       .edgeEffect(EdgeEffect.Spring)
-    }.height('30%').width('80%')
+    }.height('30%').width('50%')
     .borderRadius(20)
   }
 }
@@ -52,14 +48,13 @@ export struct BusinessPicker {
   @State business: Business = new Business();
   day: string [] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   @Link selectedBusinessModel: Business
-  scroller: Scroller= new Scroller();
   arr: number[] = [0, 1, 2, 3, 4, 5, 6]
 
   build() {
     Column() {
       ForEach(this.arr,
         item => {
-          businessDayAndTime({
+          BusinessDayAndTime({
             dayIndex: item + 1,
             day: this.day[item],
             business: $business,

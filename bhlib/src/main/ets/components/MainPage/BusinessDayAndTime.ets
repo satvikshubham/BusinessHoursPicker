@@ -3,7 +3,7 @@ import { BusinessPickerDialog } from './BusinessPicker'
 
 
 @Component
-export struct businessDayAndTime {
+export struct BusinessDayAndTime {
   @State fTime: string = ""
   @State tTime: string = ""
   where: string = "from"
@@ -62,26 +62,24 @@ export struct businessDayAndTime {
 
       if (this.business.isWorkingDay(this.dayIndex)) {
         Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-          Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-            Column() {
-              Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-                Text(this.fTime).fontSize(this.size - 2)
-                Image(this.temp).height(20).width(20)
-              }.onClick(() => {
-                this.where = "from"
-                this.dialogController.open()
-              })
-            }.padding({ right: 5 })
+          Column() {
+            Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+              Text(this.fTime).fontSize(this.size - 2)
+              Image(this.temp).height(20).width(20)
+            }.onClick(() => {
+              this.where = "from"
+              this.dialogController.open()
+            })
+          }.padding({ right: 5 })
 
-            Column() {
-              Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-                Text(this.tTime).fontSize(this.size - 2).margin({ left: 5 })
-                Image(this.temp).height(20).width(20)
-              }.onClick(() => {
-                this.where = "to"
-                this.dialogController.open()
-              })
-            }
+          Column() {
+            Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+              Text(this.tTime).fontSize(this.size - 2).margin({ left: 5 })
+              Image(this.temp).height(20).width(20)
+            }.onClick(() => {
+              this.where = "to"
+              this.dialogController.open()
+            })
           }
         }.padding({ top: 20, right: 20 }).visibility(Visibility.Visible)
 

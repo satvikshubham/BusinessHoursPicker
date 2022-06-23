@@ -1,11 +1,10 @@
 import { Business } from './Business';
 
 @Component
-export struct Viewer {
+export struct BusinessHoursWeekView {
   private finalBusinessModel: Business = undefined
   size: number = 20
   dat = new Date().getDay()
-  color: string = 'black'
 
   aboutToAppear() {
     this.finalBusinessModel = new Business(this.finalBusinessModel)
@@ -28,7 +27,7 @@ export struct Viewer {
   }
   getColor = (dayInd: number): string => {
     if (dayInd == this.dat) {
-      return '#4e754d'
+      return '#4e754d                     '
     }
     else {
       return '#000000'

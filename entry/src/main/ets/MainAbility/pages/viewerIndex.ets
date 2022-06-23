@@ -1,4 +1,4 @@
-import { Viewer, Business } from '@ohos/bhlib'
+import { BusinessHoursWeekView, Business } from '@ohos/bhlib'
 import router from '@system.router';
 
 @Component
@@ -9,7 +9,7 @@ struct ViewerIndex {
 
   build() {
     Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Viewer({
+      BusinessHoursWeekView({
         finalBusinessModel: this.finalBusinessModel
       })
     }.backgroundColor(0xebebeb).width('100%').height('100%')
