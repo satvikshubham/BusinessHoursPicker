@@ -50,7 +50,7 @@ export struct BusinessHoursWeekView {
     }
     return a;
   }
-  getColor = (dayInd: number): string => {
+  getFontColor = (dayInd: number): string => {
     if (dayInd == this.dat) {
       return this.bhTodayColor
     }
@@ -78,9 +78,9 @@ export struct BusinessHoursWeekView {
               Image(this.getImage(this.showBusinessModel, item + 1)).width(20).height(20).objectFit(ImageFit.ScaleDown)
               Text(this.dayArr[item] + ", " + this.getText(this.showBusinessModel, item + 1))
                 .fontSize(this.getFontSize(item + 1))
-                .fontColor(this.getColor(item + 1))
+                .fontColor(this.getFontColor(item + 1))
                 .fontFamily(this.getFontStyle(item + 1))
-                .padding({left:this.bhIconPadding})
+                .padding({ left: this.bhIconPadding })
             }.width('100%')
           }
         }

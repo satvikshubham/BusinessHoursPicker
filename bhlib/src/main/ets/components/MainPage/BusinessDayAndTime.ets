@@ -7,7 +7,7 @@ export struct BusinessDayAndTime {
   @State fTime: string = ""
   @State tTime: string = ""
   where: string = "from"
-  bhFormat : number = 24
+  bhFormat: number = 24
   private dayIndex: number = 0;
   dialogController: CustomDialogController = new CustomDialogController({
     builder: BusinessPickerDialog({
@@ -32,10 +32,10 @@ export struct BusinessDayAndTime {
       this.business.setToTime(dayInd, this.tTime)
     }
   }
+
   bhTextColor: string = '#000000'
   bhTextSize: number = 20
   bhTextStyle: string = 'calibri'
-
   private day: string = "";
   @State toggle: boolean = false
   @Link business: Business
@@ -78,7 +78,11 @@ export struct BusinessDayAndTime {
 
           Column() {
             Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-              Text(this.tTime).fontSize(this.bhTextSize - 2).fontColor(this.bhTextColor).fontFamily(this.bhTextStyle).margin({ left: 5 })
+              Text(this.tTime)
+                .fontSize(this.bhTextSize - 2)
+                .fontColor(this.bhTextColor)
+                .fontFamily(this.bhTextStyle)
+                .margin({ left: 5 })
               Image(this.temp).height(20).width(20)
             }.onClick(() => {
               this.where = "to"

@@ -7,7 +7,6 @@ import router from '@system.router';
 struct Index {
   @State finalBusinessModel: Business  = new Business()
   scroller: Scroller = new Scroller();
-  done: boolean
 
   build() {
     Scroll(this.scroller) {
@@ -18,14 +17,13 @@ struct Index {
             bhTextColor: '#000000',
             bhTextSize: 20,
             bhTextStyle: 'calibri',
-            bhFormat : 12
+            bhFormat: 24
           })
         }
 
         Row() {
           Button("Apply", { type: ButtonType.Normal }).onClick(() => {
             var er = this.finalBusinessModel.isValid(this.finalBusinessModel.getWorkingDays())
-            this.done = er.done
             prompt.showToast({
               message: er.message
             })
@@ -33,8 +31,8 @@ struct Index {
           Button('View', { type: ButtonType.Normal })
             .onClick(() => {
               var er = this.finalBusinessModel.isValid(this.finalBusinessModel.getWorkingDays())
-              this.done = er.done
-              if (this.done) {
+              var done = er.done
+              if (done) {
                 router.push({
                   uri: 'pages/viewerIndex',
                   params: {

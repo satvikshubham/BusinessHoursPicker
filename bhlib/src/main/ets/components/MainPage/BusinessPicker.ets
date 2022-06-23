@@ -6,7 +6,7 @@ export struct BusinessPickerDialog {
   time: string
   where: string
   dayInd: number
-  format : number
+  format: number
   callback: (selIndex, where, dayInd) => void
   arr12: string [] = [
     "12h", "12:00 AM", "01:00 AM", "02:00 AM", "03:00 AM",
@@ -15,7 +15,6 @@ export struct BusinessPickerDialog {
     "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM",
     "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM",
   ]
-
   arr24: string[]
     = [
     "24h", "00:00", "01:00", "02:00", "03:00",
@@ -29,7 +28,7 @@ export struct BusinessPickerDialog {
   build() {
     Column() {
       List({ initialIndex: 0 }) {
-        if (this.format ==24){
+        if (this.format == 24) {
           ForEach(this.arr24, (item) => {
             ListItem() {
               Text(item)
@@ -45,7 +44,7 @@ export struct BusinessPickerDialog {
             }
           }, item => item)
         }
-        else{
+        else {
           ForEach(this.arr12, (item) => {
             ListItem() {
               Text(item)
@@ -78,7 +77,8 @@ export struct BusinessPicker {
   bhTextColor: string = '#000000'
   bhTextSize: number = 20
   bhTextStyle: string = 'calibri'
-  bhFormat : number = 24
+  bhFormat: number = 24
+
   build() {
     Column() {
       ForEach(this.arr,
@@ -87,10 +87,10 @@ export struct BusinessPicker {
             dayIndex: item + 1,
             day: this.day[item],
             business: $selectedBusinessModel,
-            bhTextColor : this.bhTextColor,
-            bhTextSize : this.bhTextSize,
-            bhTextStyle : this.bhTextStyle,
-            bhFormat : this.bhFormat
+            bhTextColor: this.bhTextColor,
+            bhTextSize: this.bhTextSize,
+            bhTextStyle: this.bhTextStyle,
+            bhFormat: this.bhFormat
           })
         }
       )

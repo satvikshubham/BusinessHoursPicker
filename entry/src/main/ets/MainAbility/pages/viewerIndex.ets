@@ -16,7 +16,7 @@ struct ViewerIndex {
         bhTextColor: '#000000',
         bhTextSize: 20,
         bhTextStyle: 'calibri',
-        bhTodayColor: '#854a3e',
+        bhTodayColor: '#4e754d',
         bhTodayStyle: 'calibri',
         bhTodayTextSize: 22,
         bhTodayIcon: $r('app.media.unlock')
