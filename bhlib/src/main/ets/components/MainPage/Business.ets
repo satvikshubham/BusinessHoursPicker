@@ -1,5 +1,3 @@
-import prompt from '@system.prompt';
-
 export class Business {
   private workingDays: boolean[] = [false, false, false, false, false, false, false];
   private from: string[] = ["", "", "", "", "", "", ""]
