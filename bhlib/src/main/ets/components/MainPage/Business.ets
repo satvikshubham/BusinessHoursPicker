@@ -42,24 +42,19 @@ export class Business {
   }
   isValid = (working: boolean[]): any[] => {
     var done = true;
-    var arr : any [] = [];
-    var message : string = ""
+    var arr: any [] = [];
+    var message: string = ""
     for (var i: number = 0;i < 7; i++) {
       if (working[i] == true) {
-        if (this.getFromTime(i + 1) === "" ) {
-//          prompt.showToast({
-//            message: "Set the from and to time properly for the day: " + this.dayArr[i]
-//          })
+        if (this.getFromTime(i + 1) === "") {
           message = "Set the from and to time properly for the day: " + this.dayArr[i]
           done = false
           break
         }
       }
     }
-    if (done){
-//      prompt.showToast({
-        message = "Saved"
-//      })
+    if (done) {
+      message = "Saved"
     }
     arr.push(done)
     arr.push(message)
