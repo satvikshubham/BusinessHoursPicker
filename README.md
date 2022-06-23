@@ -53,6 +53,21 @@ BusinessHoursWeekView({
         bhTodayIcon: $r(resource)
       })
 ```
+## Styling
+****
+You can style the viewer  using theses attributes :
+
+| Attribute  | Description  |
+| ------------ | ------------ |
+| bhIcon  | Left icon of the day  |
+|bhTextColor   |  Text color |
+| bhTextSize  | Text Size  |
+| bhIconPadding  | Left icon padding  |
+|  bhTextStyle | Default text style   |
+|  bhTodayStyle | Today  text style (highlighted)   |
+|  bhTodayTextSize | Today  text size|
+| bhTodayIcon | Today left icon|
+| bhFormat |12 or 24 hours format|
 ## Compatibility
 ****
 Supports OpenHarmony API version 8
