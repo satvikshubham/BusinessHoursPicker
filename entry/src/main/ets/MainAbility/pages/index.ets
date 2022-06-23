@@ -4,7 +4,7 @@ import router from '@system.router';
 
 @Entry
 @Component
-struct indexAtr {
+struct Index {
   @State finalBusinessModel: Business  = new Business()
   scroller: Scroller = new Scroller();
   tempBusiness : Business = new Business
@@ -20,7 +20,8 @@ struct indexAtr {
         }
         Row(){
           Button("Apply", { type: ButtonType.Normal }).onClick(()=>{
-            this.done = this.tempBusiness.isValid(this.tempBusiness.getWorkingDays())
+            var arr : any [] = this.tempBusiness.isValid(this.tempBusiness.getWorkingDays())
+            this.done = arr[0]
             this.finalBusinessModel.reset()
             if (this.done) {
               for (var i: number = 0;i < 7; i++) {
@@ -30,10 +31,10 @@ struct indexAtr {
                   this.finalBusinessModel.setToTime(i + 1, this.tempBusiness.getToTime(i + 1))
                 }
               }
-              prompt.showToast({
-                message: "Saved"
-              })
             }
+            prompt.showToast({
+              message: arr[1]
+            })
           }).width('50%').backgroundColor(0x7aa150)
           Button('View', { type: ButtonType.Normal })
             .onClick(() => {

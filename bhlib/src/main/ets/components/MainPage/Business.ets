@@ -40,19 +40,29 @@ export class Business {
     this.from = ["", "", "", "", "", "", ""]
     this.to = ["", "", "", "", "", "", ""]
   }
-  isValid = (working: boolean[]): boolean => {
+  isValid = (working: boolean[]): any[] => {
     var done = true;
+    var arr : any [] = [];
+    var message : string = ""
     for (var i: number = 0;i < 7; i++) {
       if (working[i] == true) {
         if (this.getFromTime(i + 1) === "" ) {
-          prompt.showToast({
-            message: "Set the from and to time properly for the day: " + this.dayArr[i]
-          })
+//          prompt.showToast({
+//            message: "Set the from and to time properly for the day: " + this.dayArr[i]
+//          })
+          message = "Set the from and to time properly for the day: " + this.dayArr[i]
           done = false
           break
         }
       }
     }
-    return done
+    if (done){
+//      prompt.showToast({
+        message = "Saved"
+//      })
+    }
+    arr.push(done)
+    arr.push(message)
+    return arr
   }
 }

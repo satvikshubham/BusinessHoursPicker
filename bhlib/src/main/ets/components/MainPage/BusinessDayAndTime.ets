@@ -1,64 +1,15 @@
 import { Business } from './Business';
-
-@CustomDialog
-struct CustomDialogExample {
-  time: string
-  where: string
-  dayInd: number
-  callback: (selIndex, where, dayInd) => void
-  arr: string[]
-    = [
-    "24h", "00:00", "01:00", "02:00", "03:00",
-    "04:00", "05:00", "06:00", "07:00", "08:00",
-    "09:00", "10:00", "11:00", "12:00", "13:00",
-    "14:00", "15:00", "16:00", "17:00", "18:00",
-    "19:00", "20:00", "21:00", "22:00", "23:00",
-  ]
-  controller: CustomDialogController
-
-  transfer(index: string) {
-    return index
-  }
-
-  build() {
-    Column() {
-      List({ initialIndex: 0 }) {
-        ForEach(this.arr, (item) => {
-          ListItem() {
-            Text(item)
-              .fontSize(16)
-              .width('100%')
-              .padding(10)
-              .textAlign(TextAlign.Center)
-              .backgroundColor(0xFFFFFF)
-              .onClick(() => {
-                this.callback(item, this.where, this.dayInd)
-                this.controller.close()
-              })
-          }
-        }, item => item)
-      }
-      .listDirection(Axis.Vertical)
-      .divider({ strokeWidth: 2, color: 0xd5d9de })
-      .edgeEffect(EdgeEffect.Spring)
-    }.height('30%').width('80%')
-    .borderRadius(20)
-  }
-}
+import { BusinessPickerDialog } from './BusinessPicker'
 
 
 @Component
 export struct businessDayAndTime {
-  private day: string = "";
-  private dayIndex: number = 0;
-  private size: number = 15;
   @State fTime: string = ""
   @State tTime: string = ""
-  @State toggle: boolean = false
   where: string = "from"
-  @Link business: Business
+  private dayIndex: number = 0;
   dialogController: CustomDialogController = new CustomDialogController({
-    builder: CustomDialogExample({
+    builder: BusinessPickerDialog({
       time: this.fTime,
       where: this.where,
       dayInd: this.dayIndex,
@@ -80,6 +31,10 @@ export struct businessDayAndTime {
     }
   }
 
+  private day: string = "";
+  private size: number = 15;
+  @State toggle: boolean = false
+  @Link business: Business
   temp: Resource = $r('app.media.drop')
 
   build() {
@@ -100,7 +55,7 @@ export struct businessDayAndTime {
               this.toggle = false
               this.business.setFromTime(this.dayIndex, "")
               this.business.setToTime(this.dayIndex, "")
-              this.business.setWorkingDay(this.dayIndex,false)
+              this.business.setWorkingDay(this.dayIndex, false)
             }
           })
       }.height(40)
