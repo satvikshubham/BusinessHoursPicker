@@ -1,7 +1,7 @@
-export { Business } from './Business'
+export { Business } from './src/main/ets/components/MainPage/Business'
 
-export { businessDayAndTime } from './BusinessDayAndTime'
+export { businessDayAndTime } from './src/main/ets/components/MainPage/BusinessDayAndTime'
 
-export { BusinessPicker } from './BusinessPickerNew'
+export { BusinessPicker } from './src/main/ets/components/MainPage/BusinessPickerNew'
 
-export { Viewer } from './Viewer'
+export { Viewer } from './src/main/ets/components/MainPage/Viewer'
