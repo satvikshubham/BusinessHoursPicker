@@ -34,6 +34,7 @@ export struct BusinessDayAndTime {
   }
 
   bhTextColor: string = '#000000'
+  bhTodayColor : string = '#4e754d'
   bhTextSize: number = 20
   bhTextStyle: string = 'calibri'
   private day: string = "";
@@ -46,7 +47,7 @@ export struct BusinessDayAndTime {
       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
         Text(this.day).fontSize(this.bhTextSize).fontColor(this.bhTextColor).fontFamily(this.bhTextStyle)
         Toggle({ type: ToggleType.Switch, isOn: this.toggle })
-          .selectedColor(0x39a2db)
+          .selectedColor(this.bhTodayColor)
           .switchPointColor(0xe5ffffff)
           .onChange((isOn: boolean = this.toggle) => {
             if (isOn) {

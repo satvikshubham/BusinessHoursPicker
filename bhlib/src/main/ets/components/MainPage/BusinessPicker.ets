@@ -78,7 +78,7 @@ export struct BusinessPicker {
   bhTextSize: number = 20
   bhTextStyle: string = 'calibri'
   bhFormat: number = 24
-
+  bhTodayColor : string = '#4e754d'
   build() {
     Column() {
       ForEach(this.arr,
@@ -90,7 +90,8 @@ export struct BusinessPicker {
             bhTextColor: this.bhTextColor,
             bhTextSize: this.bhTextSize,
             bhTextStyle: this.bhTextStyle,
-            bhFormat: this.bhFormat
+            bhFormat: this.bhFormat,
+            bhTodayColor : '#4e754d'
           })
         }
       )

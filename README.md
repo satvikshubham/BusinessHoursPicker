@@ -36,6 +36,7 @@ BusinessPicker({
             bhTextSize: textSize,
             bhTextStyle: 'font',
             bhFormat : (format 12 or 24)
+            bhTodayColor: 'todayColor'
           })
 ```
 To display full list of business days
