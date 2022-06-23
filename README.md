@@ -18,7 +18,7 @@ import { Business,BusinessPicker, Viewer }  from '@ohos/bhlib'
 ## Screenshots
 ****
 ![MainScreen](./Images/Mainscreen.png) ![MainScreen2](./Images/Mainscreen2.png)
-![MainScreen3](./Images/Mainscreen3.png) ![ViewerScreen1](./Images/ViewerScreen1.png)
+![MainScreen3](./Images/MainScreen3.png) ![ViewerScreen1](./Images/ViewerScreen1.png)
 
 ## Usage examples
 ***
