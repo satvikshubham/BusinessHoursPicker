@@ -93,8 +93,8 @@ export struct BusinessDayAndTime {
         }.padding({ top: 20, right: 20 }).visibility(Visibility.Visible)
 
         Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-          Divider().width(120)
-          Divider().width(120).margin({ right: 30 })
+          Divider().width(120).strokeWidth(1.2)
+          Divider().width(120).margin({ right: 30 }).strokeWidth(1.2)
         }.padding({ bottom: 20 })
       }
     }

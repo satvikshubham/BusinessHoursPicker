@@ -12,7 +12,7 @@ struct ViewerIndex {
       BusinessHoursWeekView({
         showBusinessModel: this.finalBusinessModel,
         bhIcon: $r('app.media.calendar'),
-        bhIconPadding: 20,
+        bhIconPadding: 10,
         bhTextColor: '#000000',
         bhTextSize: 20,
         bhTextStyle: 'calibri',
