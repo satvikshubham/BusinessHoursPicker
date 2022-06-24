@@ -77,5 +77,5 @@ Supports OpenHarmony API version 8
 If you find any problems during usage, you can submit an [issue](https://github.com/satvikshubham/BusinessHoursPicker/issues/new/choose) to us. Of course, we also welcome you to send us PR.
 ## Open source License
 ****
-This project is based on Apache License 2.0, please enjoy and participate in open source freely.
+This project is based on [Apache License 2.0](./LICENSE), please enjoy and participate in open source freely.
 
