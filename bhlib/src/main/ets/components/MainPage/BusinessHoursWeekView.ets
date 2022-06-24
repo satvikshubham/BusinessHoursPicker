@@ -16,7 +16,6 @@ export struct BusinessHoursWeekView {
 
   aboutToAppear() {
     this.showBusinessModel = new Business(this.showBusinessModel)
-    console.log(this.bhIconPadding.toString())
   }
 
   isWorking = (business: Business, dayInd: number): boolean => {

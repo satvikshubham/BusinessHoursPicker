@@ -18,7 +18,7 @@ struct Index {
             bhTextSize: 20,
             bhTextStyle: 'calibri',
             bhFormat: 12,
-            bhTodayColor: '#4e754d'
+            bhTodayColor: '#2c3a4f'
           })
         }
 
