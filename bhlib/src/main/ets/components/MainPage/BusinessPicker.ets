@@ -71,8 +71,8 @@ export struct BusinessPickerDialog {
 
 @Component
 export struct BusinessPicker {
-  day: string [] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   @Link selectedBusinessModel: Business
+  day: string [] = Business.dayArr
   arr: number[] = [0, 1, 2, 3, 4, 5, 6]
   bhTextColor: string = '#000000'
   bhTextSize: number = 20

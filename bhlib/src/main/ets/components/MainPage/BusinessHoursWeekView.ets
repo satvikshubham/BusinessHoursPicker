@@ -67,7 +67,7 @@ export struct BusinessHoursWeekView {
     }
   }
   arr: number[] = [0, 1, 2, 3, 4, 5, 6]
-  dayArr: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  dayArr: string[] = Business.dayArr
 
   build() {
     Column({ space: 10 }) {

@@ -2,7 +2,7 @@ export class Business {
   private workingDays: boolean[] = [false, false, false, false, false, false, false];
   private from: string[] = ["", "", "", "", "", "", ""]
   private to: string[] = ["", "", "", "", "", "", ""]
-  private dayArr: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  static dayArr: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
   constructor(business?: Business) {
     if (business) {
@@ -40,7 +40,7 @@ export class Business {
     for (var i: number = 0;i < 7; i++) {
       if (working[i] == true) {
         if (this.getFromTime(i + 1) === "") {
-          message = "Set the from and to time properly for the day: " + this.dayArr[i]
+          message = "Set the from and to time properly for the day: " + Business.dayArr[i]
           done = false
           break
         }

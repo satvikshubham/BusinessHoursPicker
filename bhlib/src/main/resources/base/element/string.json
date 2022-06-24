@@ -3,6 +3,34 @@
     {
       "name": "page_show",
       "value": "page from npm package"
+    },
+    {
+      "name": "weekDay_monday",
+      "value": "Monday"
+    },
+    {
+      "name": "weekDay_tuesday",
+      "value": "Tuesday"
+    },
+    {
+      "name": "weekDay_wednesday",
+      "value": "Wednesday"
+    },
+    {
+      "name": "weekDay_thursday",
+      "value": "Thursday"
+    },
+    {
+      "name": "weekDay_friday",
+      "value": "Friday"
+    },
+    {
+      "name": "weekDay_saturday",
+      "value": "Satuday"
+    },
+    {
+      "name": "weekDay_sunday",
+      "value": "Sunday"
     }
   ]
 }
