@@ -66,6 +66,7 @@ You can style the viewer  using theses attributes :
 | bhIconPadding  | Left icon padding  |
 |  bhTextStyle | Default text style   |
 |  bhTodayStyle | Today  text style (highlighted)   |
+|  bhTodayColor | Today  text color (highlighted)   |
 |  bhTodayTextSize | Today  text size|
 | bhTodayIcon | Today left icon|
 | bhFormat |12 or 24 hours format|
