@@ -63,7 +63,7 @@ export struct TimeSelectorDialog {
       .listDirection(Axis.Vertical)
       .divider({ strokeWidth: 2, color: 0xd5d9de })
       .edgeEffect(EdgeEffect.Spring)
-    }.height('30%').width('50%')
+    }.height('60%').width('50%')
     .borderRadius(20)
   }
 }
