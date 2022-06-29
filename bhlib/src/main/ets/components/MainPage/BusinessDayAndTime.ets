@@ -131,7 +131,6 @@ export struct BusinessDayAndTime {
         Text(this.day).fontSize(this.bhTextSize).fontColor(this.bhTextColor).fontFamily(this.bhTextStyle)
         Toggle({ type: ToggleType.Switch, isOn: this.toggle })
           .selectedColor(this.bhTodayColor)
-          .switchPointColor(0xe5ffffff)
           .onChange((isOn: boolean = this.toggle) => {
             if (isOn) {
               this.toggle = true;

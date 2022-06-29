@@ -19,7 +19,7 @@ import { Business } from './Business';
 @Component
 export struct BusinessHoursWeekView {
   private showBusinessModel: Business = undefined
-  dat = new Date().getDay()
+  isToday = new Date().getDay()
   bhIcon: Resource = $r('app.media.calendar')
   bhIconPadding: number = 10
   bhTextColor: string = '#000000'
@@ -41,44 +41,42 @@ export struct BusinessHoursWeekView {
     return true;
   }
   getFontStyle = (dayIndex: number): string => {
-    if (dayIndex == this.dat) {
-      return this.bhTodayStyle
+    if (dayIndex != this.isToday) {
+      return this.bhTextStyle
     }
     else {
-      return this.bhTextStyle
+      return this.bhTodayStyle
     }
   }
   getFontSize = (dayIndex: number): number => {
-    if (dayIndex == this.dat) {
-      return this.bhTodayTextSize
+    if (dayIndex != this.isToday) {
+      return this.bhTextSize
     }
     else {
-      return this.bhTextSize
+      return this.bhTodayTextSize
     }
   }
   getText = (business: Business, dayInd: number): string => {
     var a: string = ""
-    if (business.getFromTime(dayInd) == "" && !business.isWorkingDay(dayInd)) {
-    }
-    else {
+    if (!(business.getFromTime(dayInd) == "" && !business.isWorkingDay(dayInd))) {
       a = business.getFromTime(dayInd) + " - " + business.getToTime(dayInd)
     }
     return a;
   }
   getFontColor = (dayInd: number): string => {
-    if (dayInd == this.dat) {
-      return this.bhTodayColor
-    }
-    else {
+    if (dayInd != this.isToday) {
       return this.bhTextColor
     }
+    else {
+      return this.bhTodayColor
+    }
   }
-  getImage = (bus: Business, dI): Resource => {
-    if (dI == this.dat) {
-      return this.bhTodayIcon
+  getImage = (bus: Business, dayInd): Resource => {
+    if (dayInd != this.isToday) {
+      return this.bhIcon
     }
     else {
-      return this.bhIcon
+      return this.bhTodayIcon
     }
   }
   arr: number[] = [0, 1, 2, 3, 4, 5, 6]
