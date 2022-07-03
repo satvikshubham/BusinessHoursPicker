@@ -19,7 +19,7 @@ import { Business } from './Business';
 @Component
 export struct BusinessHoursWeekView {
   private showBusinessModel: Business = undefined
-  isToday = new Date().getDay()
+  isToday = new Date().getDay() + 1
   bhIcon: Resource = $r('app.media.calendar')
   bhIconPadding: number = 10
   bhTextColor: string = '#000000'
@@ -71,7 +71,7 @@ export struct BusinessHoursWeekView {
       return this.bhTodayColor
     }
   }
-  getImage = (bus: Business, dayInd): Resource => {
+  getImage = (bus: Business, dayInd :number): Resource => {
     if (dayInd != this.isToday) {
       return this.bhIcon
     }
