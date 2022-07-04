@@ -23,8 +23,6 @@ import router from '@system.router';
 struct Index {
   @State finalBusinessModel: Business  = new Business()
   scroller: Scroller = new Scroller();
-  fromArr: string[] = ["", "", "", "", "", "", ""]
-  toArr: string [] = ["", "", "", "", "", "", ""]
   dayArr: string [] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   workingDays: boolean [] = [false, false, false, false, false, false, false]
   arr12: string [] = [
@@ -44,8 +42,8 @@ struct Index {
   ]
 
   aboutToAppear() {
-    this.finalBusinessModel.setFromArray(this.fromArr)
-    this.finalBusinessModel.setToArray(this.toArr)
+    this.finalBusinessModel.setFromArray()
+    this.finalBusinessModel.setToArray()
     this.finalBusinessModel.setDayArr(this.dayArr)
     this.finalBusinessModel.setWorkingDays(this.workingDays)
     Business.setArr12(this.arr12)

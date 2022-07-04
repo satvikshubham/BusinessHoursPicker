@@ -44,13 +44,13 @@ export class Business {
     return Business.arr24
   }
 
-  setFromArray = (arr: string []): Business => {
-    this.from = arr
+  setFromArray = (): Business => {
+    this.from = ["", "", "", "", "", "", ""]
     return this
   }
 
-  setToArray = (arr: string []): Business => {
-    this.to = arr
+  setToArray = (): Business => {
+    this.to = ["", "", "", "", "", "", ""]
     return this
   }
 
